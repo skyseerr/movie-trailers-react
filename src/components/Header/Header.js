@@ -10,9 +10,9 @@ const Header = () => {
 			<div className="row">
 				<div className="col-12">
 					<div className="header__content">
-						<a href="/" className="header__logo">
+						<Link to="/" className="header__logo">
 							<img src="img/logo.svg" alt="" />
-						</a>
+						</Link>
 
 						<ul className="header__nav">
 
@@ -77,10 +77,10 @@ const Header = () => {
 								</ul>
 							</div> */}
 
-							<a href="/login" className="header__sign-in">
+							<Link to="/login" className="header__sign-in">
 								<i className="icon ion-ios-log-in"></i>
 								<span>sign in</span>
-							</a>
+							</Link>
 						</div>
 
 						<button className="header__btn" type="button">

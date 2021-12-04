@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ForgotPassword = () => {
 
 return (
@@ -8,9 +10,9 @@ return (
                 <div className="col-12">
                     <div className="sign__content">
                         <form action="#" className="sign__form">
-                            <a href="index.html" className="sign__logo">
+                            <Link to="index.html" className="sign__logo">
                                 <img src="img/logo.svg" alt="" />
-                            </a>
+                            </Link>
 
                             <div className="sign__group">
                                 <input type="text" className="sign__input" placeholder="Email" />
@@ -18,7 +20,7 @@ return (
 
                             <div className="sign__group sign__group--checkbox">
                                 <input id="remember" name="remember" type="checkbox" checked="checked" />
-                                <label for="remember">I agree to the <a href="privacy.html">Privacy Policy</a></label>
+                                <label for="remember">I agree to the <Link to="privacy.html">Privacy Policy</Link></label>
                             </div>
 
                             <button className="sign__btn" type="button">Send</button>
