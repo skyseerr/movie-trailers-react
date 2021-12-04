@@ -38,7 +38,7 @@ const Login = () => {
 
 							<span className="sign__text">Don't have an account? <a href="/register">Sign up!</a></span>
 
-							<span className="sign__text"><a href="forgot.html">Forgot password?</a></span>
+							<span className="sign__text"><a href="/forgot-password">Forgot password?</a></span>
 						</form>
 					</div>
 				</div>
