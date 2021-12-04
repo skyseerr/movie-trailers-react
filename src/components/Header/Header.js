@@ -13,15 +13,6 @@ const Header = () => {
 						</a>
 
 						<ul className="header__nav">
-							<li className="header__nav-item">
-								<a className="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuHome" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home <i className="icon ion-ios-arrow-down"></i></a>
-
-								<ul className="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuHome">
-									<li><a href="index.html">Home style 1</a></li>
-									<li><a href="index2.html">Home style 2</a></li>
-									<li><a href="index3.html">Home style 3</a></li>
-								</ul>
-							</li>
 
 							<li className="header__nav-item">
 								<a className="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalog <i className="icon ion-ios-arrow-down"></i></a>
