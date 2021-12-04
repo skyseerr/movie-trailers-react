@@ -355,39 +355,7 @@ Primary use:	HotFlix Template
     max-height: 200px;
   }
 }
-/*==============================
-	Catalog
-==============================*/
-.catalog {
-  padding: 0 0 20px;
-}
-.catalog__more {
-  margin: 30px auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 46px;
-  width: 160px;
-  border-radius: 6px;
-  background-color: transparent;
-  font-size: 14px;
-  color: #fff;
-  text-transform: uppercase;
-  border: 2px solid #f9ab00;
-}
-.catalog__more:hover {
-  color: #fff;
-  background-color: rgba(249,171,0,0.05);
-}
-@media (min-width: 768px) {
-  .catalog {
-    padding: 0 0 40px;
-  }
-  .catalog__more {
-    margin: 40px auto 30px;
-  }
-}
+
 /*==============================
 	Filter
 ==============================*/
