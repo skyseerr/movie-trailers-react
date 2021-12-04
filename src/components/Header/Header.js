@@ -8,26 +8,29 @@ const Header = () => {
 			<div className="row">
 				<div className="col-12">
 					<div className="header__content">
-						<a href="index.html" className="header__logo">
+						<a href="/" className="header__logo">
 							<img src="img/logo.svg" alt="" />
 						</a>
 
 						<ul className="header__nav">
 
 							<li className="header__nav-item">
-								<a className="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalog <i className="icon ion-ios-arrow-down"></i></a>
-
-								<ul className="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
-									<li><a href="catalog.html">Catalog style 1</a></li>
-									<li><a href="catalog2.html">Catalog style 2</a></li>
-									<li><a href="details.html">Details style 1</a></li>
-									<li><a href="details2.html">Details style 2</a></li>
-								</ul>
+								<a className="dropdown-toggle header__nav-link" href="/catalog" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalog </a>
 							</li>
 
 							<li className="header__nav-item">
-								<a href="pricing.html" className="header__nav-link">Pricing plan</a>
+								<a href="/create" className="header__nav-link">Create</a>
 							</li>
+
+							<li className="header__nav-item">
+								<a href="/about" className="header__nav-link">About</a>
+							</li>
+
+							<li className="header__nav-item">
+								<a href="/contacts" className="header__nav-link">Contacts</a>
+							</li>	
+
+
 
 							<li className="dropdown header__nav-item">
 								<a className="dropdown-toggle header__nav-link header__nav-link--more" href="#" role="button" id="dropdownMenuMore" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="icon ion-ios-more"></i></a>
@@ -61,7 +64,7 @@ const Header = () => {
 							<button className="header__search-btn" type="button">
 								<i className="icon ion-ios-search"></i>
 							</button>
-
+{/* 
 							<div className="dropdown header__lang">
 								<a className="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">EN <i className="icon ion-ios-arrow-down"></i></a>
 
@@ -70,9 +73,9 @@ const Header = () => {
 									<li><a href="#">Spanish</a></li>
 									<li><a href="#">Russian</a></li>
 								</ul>
-							</div>
+							</div> */}
 
-							<a href="signin.html" className="header__sign-in">
+							<a href="/login" className="header__sign-in">
 								<i className="icon ion-ios-log-in"></i>
 								<span>sign in</span>
 							</a>
