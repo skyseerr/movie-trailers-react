@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "../Header/Header.css";
 
 const Header = () => {
@@ -15,39 +17,39 @@ const Header = () => {
 						<ul className="header__nav">
 
 							<li className="header__nav-item">
-								<a href="/catalog" className="header__nav-link">Catalog</a>
+								<Link to="/catalog" className="header__nav-link">Catalog</Link>
 							</li>
 
 							<li className="header__nav-item">
-								<a href="/create" className="header__nav-link">Create</a>
+								<Link to="/create" className="header__nav-link">Create</Link>
 							</li>
 
 							<li className="header__nav-item">
-								<a href="/about" className="header__nav-link">About</a>
+								<Link to="/about" className="header__nav-link">About</Link>
 							</li>
 
 							<li className="header__nav-item">
-								<a href="/contacts" className="header__nav-link">Contacts</a>
+								<Link to="/contacts" className="header__nav-link">Contacts</Link>
 							</li>	
 
 
 
-							<li className="dropdown header__nav-item">
+							{/* <li className="dropdown header__nav-item">
 								<a className="dropdown-toggle header__nav-link header__nav-link--more" href="#" role="button" id="dropdownMenuMore" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="icon ion-ios-more"></i></a>
 
 								<ul className="dropdown-menu header__dropdown-menu scrollbar-dropdown" aria-labelledby="dropdownMenuMore">
-									<li><a href="about.html">About</a></li>
-									<li><a href="profile.html">Profile</a></li>
-									<li><a href="contacts.html">Contacts</a></li>
-									<li><a href="faq.html">Help center</a></li>
-									<li><a href="privacy.html">Privacy policy</a></li>
-									<li><a href="../admin/index.html" target="_blank">Admin pages</a></li>
-									<li><a href="signin.html">Sign in</a></li>
-									<li><a href="signup.html">Sign up</a></li>
-									<li><a href="forgot.html">Forgot password</a></li>
-									<li><a href="404.html">404 Page</a></li>
+									<li><Link to="about.html">About</Link></li>
+									<li><Link to="profile.html">Profile</Link></li>
+									<li><Link to="contacts.html">Contacts</Link></li>
+									<li><Link to="faq.html">Help center</Link></li>
+									<li><Link to="privacy.html">Privacy policy</Link></li>
+									<li><Link to="../admin/index.html" target="_blank">Admin pages</Link></li>
+									<li><Link to="signin.html">Sign in</Link></li>
+									<li><Link to="signup.html">Sign up</Link></li>
+									<li><Link to="forgot.html">Forgot password</Link></li>
+									<li><Link to="404.html">404 Page</Link></li>
 								</ul>
-							</li>
+							</li> */}
 						</ul>
 
 						<div className="header__auth">

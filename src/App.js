@@ -11,6 +11,9 @@ import ForgotPassword from "./components/Auth/ForgotPassword/ForgotPassword";
 import Catalog from "./components/Catalog/Catalog";
 
 function App() {
+
+  console.log(`refresh?`);
+
   return (
     <div className="App">
 
