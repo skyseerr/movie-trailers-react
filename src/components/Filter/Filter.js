@@ -1,3 +1,5 @@
+import "./Filter.css";
+
 const Filter = () => {
     
     return(
@@ -109,7 +111,7 @@ const Filter = () => {
 				</div>
 			</div>
 		</div>
-	</div>
+		</div>
     )
 
 }

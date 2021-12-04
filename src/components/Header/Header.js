@@ -15,7 +15,7 @@ const Header = () => {
 						<ul className="header__nav">
 
 							<li className="header__nav-item">
-								<a className="dropdown-toggle header__nav-link" href="/catalog" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalog </a>
+								<a href="/catalog" className="header__nav-link">Catalog</a>
 							</li>
 
 							<li className="header__nav-item">
@@ -90,7 +90,7 @@ const Header = () => {
 				</div>
 			</div>
 		</div>
-	</header>
+		</header>
     )
 
 }

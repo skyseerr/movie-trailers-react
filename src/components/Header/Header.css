@@ -1,6 +1,6 @@
 .header {
     display: block;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -97,6 +97,7 @@
     top: 100%;
     border-radius: 6px;
   }
+  
   .header__dropdown-menu div {
     width: 100%;
   }
