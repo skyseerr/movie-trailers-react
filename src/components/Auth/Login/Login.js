@@ -1,8 +1,35 @@
 import { Link } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
 import "../Auth.css";
 
+import { login } from "../../../services/authService";
+
 const Login = () => {
+
+	
+
+	const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
+
+	const createUser = (e) => {
+		e.preventDefault()
+		
+		let formData = new FormData(e.target);
+
+		let email = formData.get("email");
+		let password = formData.get("password");
+
+		login({email, password})
+		.then(res => res.json())
+		.then(res =>{
+			if(res.status === "403"){
+				throw new Error(res.error)
+			} else if(res.token) {
+				setCookie("jwtToken", res.token, {path: "/", maxAge: 3600})
+			}
+		})
+		.catch(error => console.log(error));
+	}
 
     return(
         <div className="sign section--bg" data-bg="img/section/section.jpg">
@@ -10,17 +37,17 @@ const Login = () => {
 			<div className="row">
 				<div className="col-12">
 					<div className="sign__content">
-						<form action="#" className="sign__form">
+						<form action="POST" onSubmit={createUser} className="sign__form">
 							<Link to="index.html" className="sign__logo">
 								<img src="img/logo.svg" alt="" />
 							</Link>
 
 							<div className="sign__group">
-								<input type="text" className="sign__input" placeholder="Email" />
+								<input type="text" name="email" className="sign__input" placeholder="Email" />
 							</div>
 
 							<div className="sign__group">
-								<input type="password" className="sign__input" placeholder="Password" />
+								<input type="password" name="password" className="sign__input" placeholder="Password" />
 							</div>
 
 							<div className="sign__group sign__group--checkbox">
@@ -28,7 +55,7 @@ const Login = () => {
 								<label for="remember">Remember Me</label>
 							</div>
 							
-							<button className="sign__btn" type="button">Sign in</button>
+							<button className="sign__btn" type="submit">Sign in</button>
 
 							<span className="sign__delimiter">or</span>
 
