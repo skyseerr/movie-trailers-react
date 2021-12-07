@@ -1,5 +1,4 @@
 import Slider from "../Slider/Slider";
-import Filter from "../Filter/Filter";
 import Catalog from "../Catalog/Catalog";
 import Premiere from "../Premiere/Premiere";
 
