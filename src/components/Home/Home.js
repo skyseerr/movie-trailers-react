@@ -5,14 +5,13 @@ import Premiere from "../Premiere/Premiere";
 import "./Home.css";
 
 const Home = () => {
-
-    return(
-        <>
-        {/* <Slider /> */}
-        <Catalog />
-        {/* <Premiere />    */}
-        </>
-    )
-}
+  return (
+    <>
+      <Slider />
+      <Catalog />
+      <Premiere />
+    </>
+  );
+};
 
 export default Home;
