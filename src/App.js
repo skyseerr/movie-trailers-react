@@ -10,6 +10,7 @@ import Register from "./components/Auth/Register/Register";
 import ForgotPassword from "./components/Auth/ForgotPassword/ForgotPassword";
 import Catalog from "./components/Catalog/Catalog";
 import Create from "./components/Create/Create";
+import Contacts from "./components/Contacts/Contacts";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/catalog" element={<Catalog />} />
       <Route path="/create" element={<Create />} />
+      <Route path="/contacts" element={<Contacts />} />
     </Routes>
     <Footer />
 
