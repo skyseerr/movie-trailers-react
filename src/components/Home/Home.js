@@ -8,13 +8,11 @@ const Home = () => {
 
     return(
         <>
-        <Slider />
+        {/* <Slider /> */}
         <Catalog />
-        <Premiere />
-        
+        {/* <Premiere />    */}
         </>
     )
-
 }
 
 export default Home;
