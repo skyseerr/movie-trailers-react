@@ -15,7 +15,23 @@ const Create = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+
+    let formData = new FormData(e.target);
+
+    let title = formData.get("title");
+    let director = formData.get("director");
+    let cast = formData.get("cast");
+    let genre = formData.get("genre");
+    let year = formData.get("year");
+    let time = formData.get("time");
+    let country = formData.get("country");
+    let imageUrl = formData.get("imageUrl");
+    let trailer = formData.get("trailer");
+
+    console.log(title, director, cast, genre, year, time, country, imageUrl, trailer);
   };
+
+
 
   return (
     <div className="sign section--bg" data-bg="img/section/section.jpg">
@@ -62,8 +78,8 @@ const Create = () => {
                     name="genre"
                     className="sign__input"
                     placeholder="Genre *"
-                    disabled="disabled"
                     defaultValue={genreValue}
+                    readOnly
                   />
                   {genreValue.length > 0 ? (
                     <button
@@ -182,7 +198,7 @@ const Create = () => {
                 <div className="sign__group">
                   <input
                     type="text"
-                    name="imgUrl"
+                    name="imageUrl"
                     className="sign__input"
                     placeholder="Image url *"
                   />
