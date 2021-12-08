@@ -9,10 +9,9 @@ import Login from "./components/Auth/Login/Login";
 import Register from "./components/Auth/Register/Register";
 import ForgotPassword from "./components/Auth/ForgotPassword/ForgotPassword";
 import Catalog from "./components/Catalog/Catalog";
+import Create from "./components/Create/Create";
 
 function App() {
-
-  console.log(`refresh?`);
 
   return (
     <div className="App">
@@ -24,6 +23,7 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/catalog" element={<Catalog />} />
+      <Route path="/create" element={<Create />} />
     </Routes>
     <Footer />
 

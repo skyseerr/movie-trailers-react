@@ -7,8 +7,6 @@ import { login } from "../../../services/authService";
 
 const Login = () => {
 
-	
-
 	const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
 
 	const createUser = (e) => {
