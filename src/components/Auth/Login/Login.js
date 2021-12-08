@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from 'react-cookie';
 
 import "../Auth.css";
@@ -9,24 +9,25 @@ const Login = () => {
 
 	const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
 
+	const navigate = useNavigate();
+
 	const createUser = (e) => {
 		e.preventDefault()
 		
 		let formData = new FormData(e.target);
 
 		let email = formData.get("email");
-		let password = formData.get("password");
-
+		let password = formData.get("password");		
+	
 		login({email, password})
-		.then(res => res.json())
-		.then(res =>{
-			if(res.status === "403"){
-				throw new Error(res.error)
-			} else if(res.token) {
-				setCookie("jwtToken", res.token, {path: "/", maxAge: 3600})
-			}
+		.then(result =>{
+			setCookie("jwtToken", result.userData.token, {path: "/", maxAge: 3600})
 		})
-		.catch(error => console.log(error));
+		.then(navigate("/"))
+		.catch(err=> {
+			console.log(err.error);
+		})
+					
 	}
 
     return(

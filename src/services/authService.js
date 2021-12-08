@@ -7,14 +7,22 @@ exports.login = async ({email, password}) => {
             password
         };
         
-        return fetch((`${url}/auth/login`), {
+        let res = await fetch((`${url}/auth/login`), {
             method: 'POST',
             headers: {
-                'Accept': 'application/json, text/plain, /',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(user)
         });
+
+        let jsonResult = await res.json();
+
+
+        if(res.ok) {
+            return jsonResult;
+        } else {
+            throw jsonResult;
+        }
     
 
 }
