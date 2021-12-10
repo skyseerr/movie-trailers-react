@@ -12,6 +12,7 @@ import Catalog from "./components/Catalog/Catalog";
 import Create from "./components/Create/Create";
 import Contacts from "./components/Contacts/Contacts";
 import Profile from "./components/Profile/Profile";
+import Error from "./components/404/Error";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
       <Route path="/contacts" element={<Contacts />} />
       <Route path="/contacts" element={<Contacts />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="*" element={<Error />} />
     </Routes>
     <Footer />
 
