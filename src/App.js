@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { Routes, Route } from "react-router-dom";
 
-import { useCookies } from 'react-cookie';
-
-
-
+import { useCookies } from "react-cookie";
 
 import "./App.css";
 
@@ -24,17 +21,18 @@ import Logout from "./components/Auth/Logout/Logout";
 import Profile from "./components/Profile/Profile";
 
 function App() {
-
   const [user, setUser] = useState();
-  const [cookies, setCookie] = useCookies(['name']);
+  const [cookies, setCookie] = useCookies(["name"]);
 
   useEffect(() => {
-    setUser(cookies.name)
-  },[]);
+    if (user !== cookies.name) {
+      setUser(cookies.name);
+    }
+  }, []);
 
   return (
     <div className="App">
-      <UserContext.Provider value={{user, setUser}}>
+      <UserContext.Provider value={{ user, setUser }}>
         <Header />
 
         <Routes>

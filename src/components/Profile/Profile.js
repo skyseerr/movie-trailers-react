@@ -1,4 +1,24 @@
+import React, { useEffect, useState } from "react";
+
+import getProfile from "../../services/profileService";
+import { useCookies } from 'react-cookie';
+
 const Profile = () => {
+
+    const [cookies, setCookie, removeCookie] = useCookies(['jwtToken']);
+
+    const [profile, setProfile] = useState({})
+
+    useEffect(() => {
+
+      getProfile(cookies.jwtToken)
+        .then(result =>{
+            setProfile(result);
+        })
+        .catch(err=> {
+            console.log(err.error);
+        })
+      }, []);
 
     return(
 <>
@@ -30,8 +50,8 @@ const Profile = () => {
 									<img src="img/user.svg" alt="" />
 								</div>
 								<div className="profile__meta">
-									<h3>John Doe</h3>
-									<span>HOTFLIX ID: 78123</span>
+									<h3>{profile.name}</h3>
+									<span>HOTFLIX ID: {profile._id}</span>
 								</div>
 							</div>
 

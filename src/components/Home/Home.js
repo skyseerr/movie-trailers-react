@@ -7,9 +7,7 @@ import "./Home.css";
 const Home = () => {
   return (
     <>
-      <Slider />
-      <Catalog />
-      <Premiere />
+    <h2>TO do</h2>
     </>
   );
 };
