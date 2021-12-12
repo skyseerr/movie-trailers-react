@@ -20,6 +20,8 @@ import ForgotPassword from "./components/Auth/ForgotPassword/ForgotPassword";
 import Catalog from "./components/Catalog/Catalog";
 import Create from "./components/Create/Create";
 import Contacts from "./components/Contacts/Contacts";
+import Logout from "./components/Auth/Logout/Logout";
+import Profile from "./components/Profile/Profile";
 
 function App() {
 
@@ -28,7 +30,7 @@ function App() {
 
   useEffect(() => {
     setUser(cookies.name)
-  },[user]);
+  },[]);
 
   return (
     <div className="App">
@@ -38,11 +40,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/create" element={<Create />} />
           <Route path="/contacts" element={<Contacts />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
 
         <Footer />
