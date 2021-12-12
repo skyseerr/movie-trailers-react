@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import UserContext from "../../contexts/UserContext";
 
 import "../Filter/Filter";
 
 const Create = () => {
+
+  const userData = useContext(UserContext);
+
   const [genreValue, setGenreValue] = useState([]);
 
   const onClickHendler = (e) => {
@@ -50,7 +55,7 @@ const Create = () => {
                     type="text"
                     name="title"
                     className="sign__input"
-                    placeholder="Title *"
+                    placeholder="Title * "
                   />
                 </div>
 

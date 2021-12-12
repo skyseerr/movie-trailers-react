@@ -1,8 +1,32 @@
+import React, { useState, useContext } from "react";
+
+import UserContext from "../../contexts/UserContext";
+
+
 import { Link } from "react-router-dom";
 
 import "../Header/Header.css";
 
 const Header = () => {
+
+	const {user, setUser} = useContext(UserContext)
+
+	const loggedInMenu = (
+		<>
+		<Link to="/profile"><p style={{color: "white", margin : "0"}}>{user}</p></Link>
+		<Link to="/logout" className="header__sign-in">
+		<i className="icon ion-ios-log-in"></i>
+		<span>Logout</span>
+		</Link>
+		</>
+	)
+
+	const guestUserMenu = (
+		<Link to="/login" className="header__sign-in">
+		<i className="icon ion-ios-log-in"></i>
+		<span>sign in</span>
+	</Link>
+	)
 
     return (
         <header className="header">
@@ -66,21 +90,15 @@ const Header = () => {
 							<button className="header__search-btn" type="button">
 								<i className="icon ion-ios-search"></i>
 							</button>
-{/* 
-							<div className="dropdown header__lang">
-								<a className="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">EN <i className="icon ion-ios-arrow-down"></i></a>
 
-								<ul className="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuLang">
-									<li><a href="#">English</a></li>
-									<li><a href="#">Spanish</a></li>
-									<li><a href="#">Russian</a></li>
-								</ul>
-							</div> */}
+							{user ? 
 
-							<Link to="/login" className="header__sign-in">
-								<i className="icon ion-ios-log-in"></i>
-								<span>sign in</span>
-							</Link>
+								loggedInMenu :
+																
+								guestUserMenu
+						}
+
+
 						</div>
 
 						<button className="header__btn" type="button">

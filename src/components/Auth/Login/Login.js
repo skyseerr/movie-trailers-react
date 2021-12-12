@@ -1,12 +1,16 @@
+import { useState, useContext } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from 'react-cookie';
 
 import "../Auth.css";
 
 import { login } from "../../../services/authService";
+import UserContext from "../../../contexts/UserContext";
 
 const Login = () => {
 
+	const {user, setUser} = useContext(UserContext)
 	const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
 
 	const navigate = useNavigate();
@@ -22,6 +26,8 @@ const Login = () => {
 		login({email, password})
 		.then(result =>{
 			setCookie("jwtToken", result.userData.token, {path: "/", maxAge: 3600})
+			setCookie("name", result.userData.name, {path: "/", maxAge: 3600})
+			setUser(result.userData.name)
 		})
 		.then(navigate("/"))
 		.catch(err=> {
