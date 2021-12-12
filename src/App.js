@@ -14,11 +14,13 @@ import Contacts from "./components/Contacts/Contacts";
 import Profile from "./components/Profile/Profile";
 import Error from "./components/404/Error";
 
+import { AuthContext } from "./contexts/AuthContext";
+
 function App() {
 
   return (
+    <AuthContext.Provider>
     <div className="App">
-
     <Header />
     <Routes>
       <Route path="/" element={<Home />} />
@@ -33,8 +35,8 @@ function App() {
       <Route path="*" element={<Error />} />
     </Routes>
     <Footer />
-
     </div>
+    </ AuthContext.Provider>
   );
 }
 
