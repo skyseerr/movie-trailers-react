@@ -28,8 +28,8 @@ const Login = () => {
 			setCookie("jwtToken", result.userData.token, {path: "/", maxAge: 3600})
 			setCookie("name", result.userData.name, {path: "/", maxAge: 3600})
 			setUser(result.userData.name)
+			navigate('/')
 		})
-		.then(navigate("/"))
 		.catch(err=> {
 			console.log(err.error);
 		})
