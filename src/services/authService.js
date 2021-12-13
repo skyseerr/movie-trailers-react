@@ -1,4 +1,4 @@
-const url = "http://localhost:5000"
+import { url } from "../constants/urlConstant";
 
 exports.login = async ({email, password}) => {
    
