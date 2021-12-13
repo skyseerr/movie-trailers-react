@@ -19,6 +19,7 @@ import Create from "./components/Create/Create";
 import Contacts from "./components/Contacts/Contacts";
 import Logout from "./components/Auth/Logout/Logout";
 import Profile from "./components/Profile/Profile";
+import Details from "./components/Catalog/Details/Details";
 
 function App() {
   const [user, setUser] = useState();
@@ -45,6 +46,7 @@ function App() {
           <Route path="/create" element={<Create />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/details/:movieId" element={<Details />} />
         </Routes>
 
         <Footer />
