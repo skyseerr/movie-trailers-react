@@ -2,8 +2,11 @@ import React, { useState, useContext } from "react";
 
 import UserContext from "../../contexts/UserContext";
 
-import "../Filter/Filter";
-import "../Create/Create";
+import { create } from "../../services/movieService";
+
+
+import "../Filter/Filter.css";
+import "../../components/Create/Create.css";
 
 const Create = () => {
 
@@ -25,19 +28,19 @@ const Create = () => {
     let formData = new FormData(e.target);
 
     let title = formData.get("title");
-    let director = formData.get("director");
-    let cast = formData.get("cast");
-    let genre = formData.get("genre");
+    let description = formData.get("description");
     let year = formData.get("year");
-    let time = formData.get("time");
+    let duration = formData.get("duration");
+    let quality = formData.get("quality");
+    let age = formData.get("age");
     let country = formData.get("country");
+    let genre = formData.get("genre");
+    let trailerUrl = formData.get("trailerUrl");
     let imageUrl = formData.get("imageUrl");
-    let trailer = formData.get("trailer");
 
-    console.log(title, director, cast, genre, year, time, country, imageUrl, trailer);
+    create({title,description, year,duration,quality,age, country,genre, trailerUrl, imageUrl});
+
   };
-
-
 
   return (
     <main className="main">
@@ -57,7 +60,7 @@ const Create = () => {
                     <div className="col-12 col-sm-6 col-md-12">
                       <div className="form__img">
                         <label for="form__img-upload">Upload cover (270 x 400)</label>
-                        <input id="form__img-upload" name="form__img-upload" type="file" accept=".png, .jpg, .jpeg" />
+                        <input id="form__img-upload" name="form__img-upload"/>
                         <img id="form__img" src="#" alt="" />
                       </div>
                     </div>
@@ -67,23 +70,23 @@ const Create = () => {
                 <div className="col-12 col-md-7 form__content">
                   <div className="row row--form">
                     <div className="col-12">
-                      <input type="text" className="form__input" placeholder="Title" />
+                      <input type="text" className="form__input" placeholder="Title" name="title"/>
                     </div>
   
                     <div className="col-12">
-                      <textarea id="text" name="text" className="form__textarea" placeholder="Description"></textarea>
+                      <textarea id="text" name="description" className="form__textarea" placeholder="Description"></textarea>
                     </div>
   
                     <div className="col-12 col-sm-6 col-lg-3">
-                      <input type="text" className="form__input" placeholder="Release year" />
+                      <input type="text" className="form__input" placeholder="Release year" name="year"/>
                     </div>
   
                     <div className="col-12 col-sm-6 col-lg-3">
-                      <input type="text" className="form__input" placeholder="Running timed in minutes" />
+                      <input type="text" className="form__input" placeholder="Running timed in minutes" name="duration"/>
                     </div>
   
                     <div className="col-12 col-sm-6 col-lg-3">
-                      <select className="js-example-basic-single" id="quality">
+                      <select className="js-example-basic-single" id="quality" name="quality">
                         <option value=""></option>
                         <option value="FullHD">FullHD</option>
                         <option value="HD">HD</option>
@@ -91,11 +94,11 @@ const Create = () => {
                     </div>
   
                     <div className="col-12 col-sm-6 col-lg-3">
-                      <input type="text" className="form__input" placeholder="Age" />
+                      <input type="text" className="form__input" placeholder="Age" name="age"/>
                     </div>
   
                     <div className="col-12 col-lg-6">
-                      <select className="js-example-basic-multiple" id="country" multiple="multiple">
+                      <select className="js-example-basic-multiple" id="country" multiple="multiple" name="country">
                         <option value="Afghanistan">Afghanistan</option>
                         <option value="Åland Islands">Åland Islands</option>
                         <option value="Albania">Albania</option>
@@ -321,7 +324,7 @@ const Create = () => {
                     </div>
   
                     <div className="col-12 col-lg-6">
-                      <select className="js-example-basic-multiple" id="genre" multiple="multiple">
+                      <select className="js-example-basic-multiple" id="genre" multiple="multiple" name="genre">
                         <option value="Action">Action</option>
                         <option value="Animation">Animation</option>
                         <option value="Comedy">Comedy</option>
@@ -337,17 +340,7 @@ const Create = () => {
                         <option value="Otheer">Otheer</option>
                       </select>
                     </div>
-  
                     <div className="col-12">
-                      <div className="form__gallery">
-                        <label id="gallery1" for="form__gallery-upload">Upload photos</label>
-                        <input data-name="#gallery1" id="form__gallery-upload" name="gallery" className="form__gallery-upload" type="file" accept=".png, .jpg, .jpeg" multiple />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-  
-                <div className="col-12">
                   <ul className="form__radio">
                     <li>
                       <span>Item type:</span>
@@ -362,22 +355,29 @@ const Create = () => {
                     </li>
                   </ul>
                 </div>
+                    {/* <div className="col-12">
+                      <div className="form__gallery">
+                        <label id="gallery1" for="form__gallery-upload">Upload photos</label>
+                        <input data-name="#gallery1" id="form__gallery-upload" name="gallery" className="form__gallery-upload" type="file" accept=".png, .jpg, .jpeg" multiple />
+                      </div>
+                    </div> */}
+                  </div>
+                </div>
+  
+
                 
                 <div className="col-12">
                   <div className="row row--form">
                     <div className="col-12">
-                      <div className="form__video">
-                        <label id="movie1" for="form__video-upload">Upload video</label>
-                        <input data-name="#movie1" id="form__video-upload" name="movie" className="form__video-upload" type="file" accept="video/mp4,video/x-m4v,video/*" />
-                      </div>
+                      <input type="text" className="form__input" placeholder="Trailer Url" name="trailerUrl"/>
                     </div>
   
                     <div className="col-12">
-                      <input type="text" className="form__input" placeholder="Or add a link" />
+                      <input type="text" className="form__input" placeholder="Image Url" name="imageUrl"/>
                     </div>
   
                     <div className="col-12">
-                      <button type="button" className="form__btn">publish</button>
+                      <button type="submit" className="form__btn">publish</button>
                     </div>
                   </div>
                 </div>
