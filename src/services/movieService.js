@@ -1,24 +1,36 @@
 import { url } from "../constants/urlConstant";
+import constructAuthHeader from "../utils/tokenUtil";
 
-exports.create = async ({title,description, year,duration,quality,age, country,genre, trailerUrl, imageUrl}) => {
-   
+const create = async ({
+    title,
+    description,
+    year,
+    duration,
+    age,
+    country,
+    genre,
+    trailerUrl,
+    imageUrl
+}, token) => {
+
     let movie = {
         title,
-        description, 
+        description,
         year,
         duration,
-        quality,
-        age, 
+        age,
         country,
-        genre, 
-        trailerUrl, 
+        genre,
+        trailerUrl,
         imageUrl
     };
-    
-    let res = await fetch((`${url}/movies`), {
+
+    let res = await fetch((`${url}/create`), {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': constructAuthHeader(token)
+
         },
         body: JSON.stringify(movie)
     });
@@ -26,10 +38,12 @@ exports.create = async ({title,description, year,duration,quality,age, country,g
     let jsonResult = await res.json();
 
 
-    if(res.ok) {
+    if (res.ok) {
         return jsonResult;
     } else {
         throw jsonResult;
     }
 
 }
+
+export default create;
