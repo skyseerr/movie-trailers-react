@@ -1,7 +1,7 @@
 import { url } from "../constants/urlConstant";
 import constructAuthHeader from "../utils/tokenUtil";
 
-const create = async ({
+export const create = async ({
     title,
     description,
     year,
@@ -46,4 +46,22 @@ const create = async ({
 
 }
 
-export default create;
+export const getAllMovies = async () => {    
+
+    let res = await fetch((`${url}/movies`), {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    let jsonResult = await res.json();
+
+
+    if(res.ok) {
+        return jsonResult;
+    } else {
+        throw jsonResult;
+    }
+}
+
