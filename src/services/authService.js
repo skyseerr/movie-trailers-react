@@ -1,6 +1,6 @@
 import { url } from "../constants/urlConstant";
 
-exports.login = async ({email, password}) => {
+export const login = async ({email, password}) => {
    
         let user = {
             email,
@@ -29,7 +29,7 @@ exports.login = async ({email, password}) => {
 
 // exports.register = (userData) => User.create(userData);
 
-exports.register = async ({name, email, password}) => {
+export const register = async ({name, email, password}) => {
    
     let user = {
         name,

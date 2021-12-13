@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import getProfile from "../../services/profileService";
+import {getProfile} from "../../services/profileService";
 import { useCookies } from 'react-cookie';
 
 const Profile = () => {
