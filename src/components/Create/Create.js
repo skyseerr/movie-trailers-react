@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import UserContext from "../../contexts/UserContext";
 
-import create from "../../services/movieService";
+import { create } from "../../services/movieService";
 
 import "../Filter/Filter.css";
 import "../../components/Create/Create.css";
@@ -42,7 +42,7 @@ const Create = () => {
       trailerUrl,
       imageUrl,
     } = Object.fromEntries(new FormData(e.target));
-    
+
     // let formData = new FormData(e.target);
     // let title = formData.get("title");
     // let description = formData.get("description");
