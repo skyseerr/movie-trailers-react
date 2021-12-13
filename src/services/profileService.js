@@ -1,8 +1,8 @@
-import { url } from "../constants/constants";
+import { url } from "../constants/urlConstant";
 import constructAuthHeader from "../utils/tokenUtil";
 
 
-const getProfile = async (token) => {    
+export const getProfile = async (token) => {    
 
         let res = await fetch((`${url}/users/`), {
             method: 'GET',
@@ -21,5 +21,3 @@ const getProfile = async (token) => {
             throw jsonResult;
         }
 }
-
-export default getProfile;
