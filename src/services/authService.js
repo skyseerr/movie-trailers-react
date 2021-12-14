@@ -23,7 +23,6 @@ export const login = async ({email, password}) => {
         } else {
             throw jsonResult;
         }
-    
 
 }
 

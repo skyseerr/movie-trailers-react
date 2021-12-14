@@ -7,18 +7,16 @@ const Footer = () => {
         <div className="row">
           <div className="col-12">
             <div className="footer__content">
-              <a href="index.html" className="footer__logo">
+              <Link to="/" className="footer__logo">
                 <img src="img/logo.svg" alt="" />
-              </a>
+              </Link>
 
               <span className="footer__copyright">
-                © HOTFLIX, 2019—2021 <br /> Create by{" "}
-                <a
-                  href="https://themeforest.net/user/dmitryvolkov/portfolio"
-                  target="_blank"
-                >
-                  Dmitry Volkov
-                </a>
+                © movieTube, 2021-2022 <br /> Created by{" "}
+                <Link to={"https://www.linkedin.com/in/ivan-asenov/"}>
+                    
+                  Ivan Asenov
+                </Link>
               </span>
 
               <nav className="footer__nav">

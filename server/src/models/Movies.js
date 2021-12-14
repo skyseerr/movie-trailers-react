@@ -11,21 +11,17 @@ let moviesSchema = new mongoose.Schema({
         required: true,
     },
     year: {
-        type: String,
+        type: Number,
         required: true,
     },
     duration: {
+        type: Number,
+        required: true,
+    },
+    director: {
         type: String,
         required: true,
     },
-    age: {
-        type: String,
-        required: true,
-    },
-    country:[{
-        type: String,
-        required: true
-    }],
     genre:[{
         type: String,
         required: true

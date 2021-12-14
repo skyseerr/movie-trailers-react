@@ -36,23 +36,12 @@ const Create = () => {
       description,
       year,
       duration,
-      age,
+      director,
       country,
       genre,
       trailerUrl,
       imageUrl,
     } = Object.fromEntries(new FormData(e.target));
-
-    // let formData = new FormData(e.target);
-    // let title = formData.get("title");
-    // let description = formData.get("description");
-    // let year = formData.get("year");
-    // let duration = formData.get("duration");
-    // let age = formData.get("age");
-    // let country = formData.get("country");
-    // let genre = formData.get("genre");
-    // let trailerUrl = formData.get("trailerUrl");
-    // let imageUrl = formData.get("imageUrl");
 
     create(
       {
@@ -60,7 +49,7 @@ const Create = () => {
         description,
         year,
         duration,
-        age,
+        director,
         country,
         genre,
         trailerUrl,
@@ -135,7 +124,7 @@ const Create = () => {
                       />
                     </div>
 
-                    <div className="col-12 col-sm-6 col-lg-3">
+                    {/* <div className="col-12 col-sm-6 col-lg-3">
                       <select
                         className="js-example-basic-single"
                         id="quality"
@@ -145,18 +134,18 @@ const Create = () => {
                         <option value="FullHD">FullHD</option>
                         <option value="HD">HD</option>
                       </select>
-                    </div>
+                    </div> */}
 
                     <div className="col-12 col-sm-6 col-lg-3">
                       <input
                         type="text"
                         className="form__input"
-                        placeholder="Age"
-                        name="age"
+                        placeholder="Director"
+                        name="director"
                       />
                     </div>
 
-                    <div className="col-12 col-lg-6">
+                    {/* <div className="col-12 col-lg-6">
                       <select
                         className="js-example-basic-multiple"
                         id="country"
@@ -421,7 +410,7 @@ const Create = () => {
                         <option value="Zambia">Zambia</option>
                         <option value="Zimbabwe">Zimbabwe</option>
                       </select>
-                    </div>
+                    </div> */}
 
                     <div className="col-12 col-lg-6">
                       <select
@@ -480,7 +469,7 @@ const Create = () => {
                       <input
                         type="text"
                         className="form__input"
-                        placeholder="Trailer Url"
+                        placeholder="Youtube Trailer Url"
                         name="trailerUrl"
                       />
                     </div>

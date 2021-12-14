@@ -6,8 +6,7 @@ export const create = async ({
     description,
     year,
     duration,
-    age,
-    country,
+    director,
     genre,
     trailerUrl,
     imageUrl
@@ -18,8 +17,7 @@ export const create = async ({
         description,
         year,
         duration,
-        age,
-        country,
+        director,
         genre,
         trailerUrl,
         imageUrl
