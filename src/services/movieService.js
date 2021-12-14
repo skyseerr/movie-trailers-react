@@ -65,3 +65,22 @@ export const getAllMovies = async () => {
     }
 }
 
+export const getOne = async (id) => {    
+
+    let res = await fetch((`${url}/${id}/details`), {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    let jsonResult = await res.json();
+
+
+    if(res.ok) {
+        return jsonResult;
+    } else {
+        throw jsonResult;
+    }
+}
+
