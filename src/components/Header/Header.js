@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
 
 import "../Header/Header.css";
-
+import { ReactComponent as Logo } from "../../logo.svg";
 const Header = () => {
 
 	const {user, setUser} = useContext(UserContext)
@@ -33,7 +33,7 @@ const Header = () => {
 				<div className="col-12">
 					<div className="header__content">
 						<Link to="/" className="header__logo">
-							<img src="img/logo.svg" alt="" />
+							{ <Logo />}
 						</Link>
 
 						<ul className="header__nav">

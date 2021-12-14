@@ -1,3 +1,5 @@
+import { ReactComponent as Logo } from "../../logo.svg";
+
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -8,15 +10,14 @@ const Footer = () => {
           <div className="col-12">
             <div className="footer__content">
               <Link to="/" className="footer__logo">
-                <img src="img/logo.svg" alt="" />
+                < Logo />
               </Link>
 
               <span className="footer__copyright">
                 © movieTube, 2021-2022 <br /> Created by{" "}
-                <Link to={"https://www.linkedin.com/in/ivan-asenov/"}>
-                    
+                <a target="_blank" href="https://www.linkedin.com/in/ivan-asenov/">
                   Ivan Asenov
-                </Link>
+                </a>
               </span>
 
               <nav className="footer__nav">

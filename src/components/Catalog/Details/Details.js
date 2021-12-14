@@ -20,6 +20,8 @@ const Details = () => {
 		  })
 		}, []);
 
+		
+
   return (
     <>
       <section className="section section--details">
@@ -37,7 +39,7 @@ const Details = () => {
                   <div className="col-12 col-sm-5 col-md-4 col-lg-3 col-xl-5">
                     <div className="card__cover">
                       <img src={movie.imageUrl} alt="" />
-                      <span className="card__rate card__rate--green">8.4</span>
+                      <span className="card__rate card__rate--green">0</span>
                     </div>
                     <a
                       href="http://www.youtube.com/watch?v=0O2aH4XLbto"
@@ -54,10 +56,10 @@ const Details = () => {
                           <span>Director:</span> Vince Gilligan
                         </li>
                         <li>
-                          <span>Genre:</span> 
+                          <span>Genre:</span>
+						  
 						  {movie.genre}
-						  {/* <a href="#">Action</a>
-                          <a href="#">Triler</a> */}
+
                         </li>
                         <li>
                           <span>Release year:</span> {movie.year}

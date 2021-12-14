@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import { useCookies } from "react-cookie";
 import UserContext from "../../contexts/UserContext";
@@ -60,6 +60,23 @@ const Create = () => {
   };
 
   return (
+    <>
+    		<section className="section section--first section--bg" data-bg="img/section/section.jpg">
+		<div className="container">
+			<div className="row">
+				<div className="col-12">
+					<div className="section__wrap">
+						<h1 className="section__title">Create</h1>
+
+						<ul className="breadcrumb">
+							<li className="breadcrumb__item"><Link to={"/"}>Home</Link></li>
+							<li className="breadcrumb__item breadcrumb__item--active">Create</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
     <main className="main">
       <div className="container-fluid">
         <div className="row">
@@ -496,6 +513,7 @@ const Create = () => {
         </div>
       </div>
     </main>
+    </>
   );
 };
 

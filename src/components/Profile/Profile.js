@@ -22,22 +22,6 @@ const Profile = () => {
 
     return(
 <>
-	<section className="section section--first section--bg" data-bg="img/section/section.jpg">
-		<div className="container">
-			<div className="row">
-				<div className="col-12">
-					<div className="section__wrap">
-						<h2 className="section__title">My HotFlix</h2>
-
-						<ul className="breadcrumb">
-							<li className="breadcrumb__item"><a href="index.html">Home</a></li>
-							<li className="breadcrumb__item breadcrumb__item--active">Profile</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
 	<div className="content content--profile">
 		<div className="profile">
@@ -85,11 +69,6 @@ const Profile = () => {
 									</ul>
 								</div>
 							</div>
-
-							<button className="profile__logout" type="button">
-								<i className="icon ion-ios-log-out"></i>
-								<span>Logout</span>
-							</button>
 						</div>
 					</div>
 				</div>
@@ -434,55 +413,6 @@ const Profile = () => {
 		</div>
 	</div>
 
-	<section className="section section--border">
-		<div className="container">
-			<div className="row">
-				<div className="col-12">
-					<h2 className="section__title section__title--mb">Our Partners</h2>
-				</div>
-
-				<div className="col-12">
-					<p className="section__text">It is a long <b>established</b> fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using.</p>
-				</div>
-
-				<div className="col-6 col-sm-4 col-md-3 col-lg-2">
-					<a href="#" className="partner">
-						<img src="img/partners/themeforest-light-background.png" alt="" className="partner__img" />
-					</a>
-				</div>
-
-				<div className="col-6 col-sm-4 col-md-3 col-lg-2">
-					<a href="#" className="partner">
-						<img src="img/partners/audiojungle-light-background.png" alt="" className="partner__img" />
-					</a>
-				</div>
-
-				<div className="col-6 col-sm-4 col-md-3 col-lg-2">
-					<a href="#" className="partner">
-						<img src="img/partners/codecanyon-light-background.png" alt="" className="partner__img" />
-					</a>
-				</div>
-
-				<div className="col-6 col-sm-4 col-md-3 col-lg-2">
-					<a href="#" className="partner">
-						<img src="img/partners/photodune-light-background.png" alt="" className="partner__img" />
-					</a>
-				</div>
-
-				<div className="col-6 col-sm-4 col-md-3 col-lg-2">
-					<a href="#" className="partner">
-						<img src="img/partners/activeden-light-background.png" alt="" className="partner__img" />
-					</a>
-				</div>
-
-				<div className="col-6 col-sm-4 col-md-3 col-lg-2">
-					<a href="#" className="partner">
-						<img src="img/partners/3docean-light-background.png" alt="" className="partner__img" />
-					</a>
-				</div>
-			</div>
-		</div>
-	</section>
 
     </>
 
