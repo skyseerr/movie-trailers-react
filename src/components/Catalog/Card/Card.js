@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-const Card = (
-    {movie}
-    ) => {
+const Card = ({
+    movie
+}) => {
 
     return(
         <div className="col-6 col-sm-4 col-md-3 col-xl-2">
