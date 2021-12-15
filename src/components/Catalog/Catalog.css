@@ -29,3 +29,7 @@
       margin: 40px auto 30px;
     }
   }
+
+  .section--bg{
+    background: url("img/section/section.jpg") center center / cover no-repeat;
+  }
