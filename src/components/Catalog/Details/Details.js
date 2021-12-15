@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 import { useParams, Link } from "react-router-dom";
 
+import "../Details/Details.css";
+
 import { getOne } from "../../../services/movieService";
 
 const Details = () => {
@@ -57,9 +59,7 @@ const Details = () => {
                         </li>
                         <li>
                           <span>Genre:</span>
-						  
 						                {movie.genre}
-
                         </li>
                         <li>
                           <span>Release year:</span> {movie.year}
@@ -68,10 +68,9 @@ const Details = () => {
                           <span>Running time:</span> {movie.duration} min
                         </li>
                       </ul>
-                      <div>
-
-                      <button className="card__trailer"></button>
-                    <button className="card__trailer"></button>
+                      <div className="row-btn">
+                        <button className="form__btn">Edit</button>
+                        <button className="form__btn ">Delete</button>
                       </div>
                       <div className="card__description">
 						                {movie.description}
