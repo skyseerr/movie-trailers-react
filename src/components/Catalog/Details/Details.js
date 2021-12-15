@@ -58,7 +58,7 @@ const Details = () => {
                         <li>
                           <span>Genre:</span>
 						  
-						  {movie.genre}
+						                {movie.genre}
 
                         </li>
                         <li>
@@ -68,8 +68,13 @@ const Details = () => {
                           <span>Running time:</span> {movie.duration} min
                         </li>
                       </ul>
+                      <div>
+
+                      <button className="card__trailer"></button>
+                    <button className="card__trailer"></button>
+                      </div>
                       <div className="card__description">
-						  {movie.description}
+						                {movie.description}
                       </div>
                     </div>
                   </div>

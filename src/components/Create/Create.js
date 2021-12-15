@@ -7,7 +7,7 @@ import UserContext from "../../contexts/UserContext";
 import { create } from "../../services/movieService";
 
 import "../Filter/Filter.css";
-import "../../components/Create/Create.css";
+import "./Create.css";
 
 const Create = () => {
   const navigate = useNavigate();
@@ -15,8 +15,6 @@ const Create = () => {
   const userData = useContext(UserContext);
 
   const [cookies, setCookie, removeCookie] = useCookies(["jwtToken"]);
-
-  console.log(userData.token);
 
   // const [genreValue, setGenreValue] = useState([]);
 

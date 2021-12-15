@@ -14,7 +14,7 @@ const Footer = () => {
               </Link>
 
               <span className="footer__copyright">
-                © movieTube, 2021-2022 <br /> Created by{" "}
+                © Movie Tube, 2021-2022 <br /> Created by{" "}
                 <a target="_blank" href="https://www.linkedin.com/in/ivan-asenov/">
                   Ivan Asenov
                 </a>

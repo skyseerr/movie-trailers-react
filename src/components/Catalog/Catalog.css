@@ -20,6 +20,7 @@
     color: #fff;
     background-color: rgba(249,171,0,0.05);
   }
+
   @media (min-width: 768px) {
     .catalog {
       padding: 0 0 40px;

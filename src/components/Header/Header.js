@@ -38,21 +38,41 @@ const Header = () => {
 
 						<ul className="header__nav">
 
-							<li className="header__nav-item">
+						{user ?
+							<>
+								<li className="header__nav-item">
+									<Link to="/catalog" className="header__nav-link">Catalog</Link>
+								</li>
+							
+								<li className="header__nav-item">
+									<Link to="/create" className="header__nav-link">Create</Link>
+								</li>
+							
+								<li className="header__nav-item">
+									<Link to="/about" className="header__nav-link">About</Link>
+								</li>
+							
+								<li className="header__nav-item">
+									<Link to="/contacts" className="header__nav-link">Contacts</Link>
+								</li>
+							</>
+								:
+
+							<>
+								<li className="header__nav-item">
 								<Link to="/catalog" className="header__nav-link">Catalog</Link>
-							</li>
+								</li>
+						
+								<li className="header__nav-item">
+									<Link to="/about" className="header__nav-link">About</Link>
+								</li>
+						
+								<li className="header__nav-item">
+									<Link to="/contacts" className="header__nav-link">Contacts</Link>
+								</li>
+							</>
+							}
 
-							<li className="header__nav-item">
-								<Link to="/create" className="header__nav-link">Create</Link>
-							</li>
-
-							<li className="header__nav-item">
-								<Link to="/about" className="header__nav-link">About</Link>
-							</li>
-
-							<li className="header__nav-item">
-								<Link to="/contacts" className="header__nav-link">Contacts</Link>
-							</li>	
 
 
 
