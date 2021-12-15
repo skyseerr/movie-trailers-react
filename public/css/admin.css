@@ -508,7 +508,7 @@ ul {
 .main__title {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 20px;
@@ -821,7 +821,7 @@ ul {
 }
 @media (min-width: 1200px) {
   .main {
-    padding: 0 15px 30px 295px;
+    padding: 0 300px;
     margin-top: 0;
   }
   .main__title {
@@ -1064,7 +1064,7 @@ ul {
   opacity: 1;
   margin-top: 10px;
 }
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .filter {
     margin-right: 50px;
   }
@@ -1073,7 +1073,7 @@ ul {
   .filter {
     margin-right: 60px;
   }
-}
+} */
 /*==============================
 	Paginator
 ==============================*/
