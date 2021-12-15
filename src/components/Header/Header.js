@@ -8,6 +8,7 @@ import { ReactComponent as Logo } from "../../logo.svg";
 const Header = () => {
 
 	const {user, setUser} = useContext(UserContext)
+	console.log(user);
 
 	const loggedInMenu = (
 		<>

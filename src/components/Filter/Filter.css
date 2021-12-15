@@ -94,6 +94,7 @@
     opacity: 0;
     max-height: 200px;
     border-radius: 6px;
+    overflow: auto;
   }
   .filter__item-menu li {
     display: block;

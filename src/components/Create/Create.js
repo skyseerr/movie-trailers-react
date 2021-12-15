@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import UserContext from "../../contexts/UserContext";
 
 import { create } from "../../services/movieService";
+import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 
 import "../Filter/Filter.css";
 import "./Create.css";
@@ -25,6 +26,12 @@ const Create = () => {
   // const delteGenreValur = () => {
   //   setGenreValue([]);
   // };
+
+  const [bgImage, setBgImage] = useState()
+
+  const onImageChangeHandler = (e) => {
+    setBgImage(e.currentTarget.value)
+  }
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -59,28 +66,14 @@ const Create = () => {
 
   return (
     <>
-    		<section className="section section--first section--bg" data-bg="img/section/section.jpg">
-		<div className="container">
-			<div className="row">
-				<div className="col-12">
-					<div className="section__wrap">
-						<h1 className="section__title">Create</h1>
+    <BreadCrumbs props={{"name" :"Create"}} />
 
-						<ul className="breadcrumb">
-							<li className="breadcrumb__item"><Link to={"/"}>Home</Link></li>
-							<li className="breadcrumb__item breadcrumb__item--active">Create</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
     <main className="main">
       <div className="container-fluid">
         <div className="row">
           <div className="col-12">
             <div className="main__title">
-              <h2>Add new item</h2>
+              <h2>Add Movie</h2>
             </div>
           </div>
 
@@ -90,9 +83,12 @@ const Create = () => {
                 <div className="col-12 col-md-5 form__cover">
                   <div className="row row--form">
                     <div className="col-12 col-sm-6 col-md-12">
-                      <div className="form__img">
+                      <div className="form__img" style={{"backgroundImage" : `url("${bgImage}")`}}>
                         <label for="form__img-upload">
-                          Upload cover (270 x 400)
+                          {bgImage
+                            ? <p></p>
+                            : <p>Upload cover (270 x 400)</p>}
+                          
                         </label>
                         <input id="form__img-upload" name="form__img-upload" />
                         <img id="form__img" src="#" alt="" />
@@ -491,6 +487,7 @@ const Create = () => {
 
                     <div className="col-12">
                       <input
+                        onChange={onImageChangeHandler}
                         type="text"
                         className="form__input"
                         placeholder="Image Url"

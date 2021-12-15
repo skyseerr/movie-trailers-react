@@ -72,7 +72,7 @@ const Login = () => {
 
 							<span className="sign__text">Don't have an account? <Link to="/register">Sign up!</Link></span>
 
-							<span className="sign__text"><Link to="/forgot-password">Forgot password?</Link></span>
+							{/* <span className="sign__text"><Link to="/forgot-password">Forgot password?</Link></span> */}
 						</form>
 					</div>
 				</div>
