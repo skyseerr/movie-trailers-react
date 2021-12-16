@@ -231,6 +231,14 @@
     position: relative;
     margin-bottom: 20px;
   }
+  .underline{
+    border-bottom: 1px solid #222028;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 130%;
+  }
   .section__title {
     color: #fff;
     font-weight: 400;
@@ -395,7 +403,6 @@
     }
     .section__title {
       font-size: 34px;
-      margin-bottom: 0;
     }
     .section__title--mb {
       margin-bottom: 20px;

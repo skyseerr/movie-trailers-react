@@ -6,6 +6,7 @@ const Card = ({
     movie
 }) => {
 
+    const movieGenre = movie.genre
     return(
         <div className="col-6 col-sm-4 col-md-3 col-xl-2">
         <div className="card">
@@ -19,7 +20,7 @@ const Card = ({
             <div className="card__content">
                 <h3 className="card__title"><Link to={`/details/${movie._id}`}>{movie.title}</Link></h3>
                 <span className="card__category">
-                    <Link to="#">{movie.genre}</Link>
+                    {movieGenre.map(x => <Link to={x.toLowerCase()}>{x}</Link>)}
                 </span>
             </div>
         </div>
