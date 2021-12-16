@@ -6,7 +6,7 @@ import { useCookies } from "react-cookie";
 
 import "./App.css";
 
-import UserContext from "./contexts/UserContext";
+import { UserProvider } from "./contexts/UserContext";
 
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
@@ -32,8 +32,8 @@ function App() {
   }, []);
 
   return (
+    <UserProvider>
     <div className="App">
-      <UserContext.Provider value={{ user, setUser }}>
         <Header />
 
         <Routes>
@@ -50,8 +50,8 @@ function App() {
         </Routes>
 
         <Footer />
-      </UserContext.Provider>
     </div>
+    </UserProvider>
   );
 }
 
