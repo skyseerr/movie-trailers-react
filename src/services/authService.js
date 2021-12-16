@@ -25,9 +25,6 @@ export const login = async ({email, password}) => {
         }
 
 }
-
-// exports.register = (userData) => User.create(userData);
-
 export const register = async ({name, email, password}) => {
    
     let user = {

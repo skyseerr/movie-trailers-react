@@ -32,4 +32,10 @@ router.get('/movies', async (req, res) => {
     res.send(movies);
 });
 
+router.get('/lastsix', async (req,res) => {
+    let lastSixMovies = await moviesService.getLastSix()
+
+    res.send(lastSixMovies)
+});
+
 module.exports = router
