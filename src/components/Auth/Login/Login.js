@@ -7,6 +7,7 @@ import "../Auth.css";
 
 import { login } from "../../../services/authService";
 import UserContext from "../../../contexts/UserContext";
+import { ReactComponent as Logo } from "../../../logo.svg";
 
 const Login = () => {
 
@@ -32,9 +33,13 @@ const Login = () => {
 		})
 		.catch(err=> {
 			console.log(err.error);
-		})
-					
+		})			
 	}
+
+			    // token: result.userData.token,
+				// _id: result.userData._id,
+				// name: result.userData.name,
+				// email: result.userData.email,
 
     return(
         <div className="sign section--bg" data-bg="img/section/section.jpg">
@@ -43,9 +48,9 @@ const Login = () => {
 				<div className="col-12">
 					<div className="sign__content">
 						<form action="POST" onSubmit={createUser} className="sign__form">
-							<Link to="index.html" className="sign__logo">
-								<img src="img/logo.svg" alt="" />
-							</Link>
+						<Link to="/" className="header__logo">
+							{ <Logo />}
+						</Link>
 
 							<div className="sign__group">
 								<input type="text" name="email" className="sign__input" placeholder="Email" />

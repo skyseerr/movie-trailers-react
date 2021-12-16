@@ -7,6 +7,8 @@ import "../Auth.css";
 
 import { register } from "../../../services/authService";
 import UserContext from "../../../contexts/UserContext";
+import { ReactComponent as Logo } from "../../../logo.svg";
+
 
 const Register = () => {
   const { user, setUser } = useContext(UserContext);
@@ -54,9 +56,9 @@ const Register = () => {
           <div className="col-12">
             <div className="sign__content">
               <form action="POST" onSubmit={registerFormHandler} className="sign__form">
-                <Link to="index.html" className="sign__logo">
-                  <img src="img/logo.svg" alt="" />
-                </Link>
+              <Link to="/" className="header__logo">
+							<Logo />
+					  	</Link>
 
                 <div className="sign__group">
                   <input
