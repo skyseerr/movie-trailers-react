@@ -68,6 +68,12 @@
     border: 2px solid #f9ab00;
     margin-top: 10px;
   }
+
+  .btn-center{
+    display: flex;
+    justify-content: center;
+  }
+
   .form__btn:hover {
     color: #fff;
     background-color: rgba(249,171,0,0.05);

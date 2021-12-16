@@ -1,0 +1,28 @@
+div.Select.genre__control.css-1s2u09g-control {
+  background-color: #222028;
+}
+
+div.Select.genre__control.css-1s2u09g-control:hover {
+    border-color: #f9ab00;
+  }
+
+  div.css-1pahdxg-control:hover{
+    border-color: #f9ab00;
+}
+div.css-1pahdxg-control:active{
+    border-color: #f9ab00;
+}
+
+div.css-1pahdxg-control:focus{
+    border-color: #f9ab00;
+}
+
+div.css-1pahdxg-control:focus-within{
+    border-color: #f9ab00;
+    background-color: #222028;
+}
+
+div.css-1pahdxg-control:focus-visible{
+    background-color: #222028;
+    border-color: #f9ab00;
+}

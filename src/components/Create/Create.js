@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
+import Select from 'react-select'
 import { useCookies } from "react-cookie";
 import UserContext from "../../contexts/UserContext";
 
 import { create } from "../../services/movieService";
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
+import SelectOption from "../Create/SelectOption/SelectOption";
 
 import "../Filter/Filter.css";
 import "./Create.css";
@@ -147,7 +149,7 @@ const Create = () => {
                       </select>
                     </div> */}
 
-                    <div className="col-12 col-sm-6 col-lg-3">
+                    <div className="col-sm-6">
                       <input
                         type="text"
                         className="form__input"
@@ -423,27 +425,9 @@ const Create = () => {
                       </select>
                     </div> */}
 
-                    <div className="col-12 col-lg-6">
-                      <select
-                        className="js-example-basic-multiple"
-                        id="genre"
-                        multiple="multiple"
-                        name="genre"
-                      >
-                        <option value="Action">Action</option>
-                        <option value="Animation">Animation</option>
-                        <option value="Comedy">Comedy</option>
-                        <option value="Crime">Crime</option>
-                        <option value="Drama">Drama</option>
-                        <option value="Fantasy">Fantasy</option>
-                        <option value="Historical">Historical</option>
-                        <option value="Horror">Horror</option>
-                        <option value="Romance">Romance</option>
-                        <option value="Science-fiction">Science-fiction</option>
-                        <option value="Thriller">Thriller</option>
-                        <option value="Western">Western</option>
-                        <option value="Otheer">Otheer</option>
-                      </select>
+                    <div className="col-12">
+                      <SelectOption name="genre"/>
+
                     </div>
                     <div className="col-12">
                       <ul className="form__radio">
@@ -495,7 +479,7 @@ const Create = () => {
                       />
                     </div>
 
-                    <div className="col-12">
+                    <div className="col-12 btn-center">
                       <button type="submit" className="form__btn">
                         publish
                       </button>
