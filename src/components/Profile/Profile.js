@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import {getProfile} from "../../services/profileService";
 import { useCookies } from 'react-cookie';
 
+import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
+
 const Profile = () => {
 
     const [cookies, setCookie, removeCookie] = useCookies(['jwtToken']);
@@ -23,6 +25,8 @@ const Profile = () => {
     return(
 <>
 
+<BreadCrumbs props={{"name" :"My Profile"}} />
+<section class="section">
 	<div className="content content--profile">
 		<div className="profile">
 			<div className="container">
@@ -38,37 +42,6 @@ const Profile = () => {
 									<span>HOTFLIX ID: {profile._id}</span>
 								</div>
 							</div>
-
-							<ul className="nav nav-tabs content__tabs content__tabs--profile" id="content__tabs" role="tablist">
-								<li className="nav-item">
-									<a className="nav-link active" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Profile</a>
-								</li>
-
-								<li className="nav-item">
-									<a className="nav-link" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Subscription</a>
-								</li>
-
-								<li className="nav-item">
-									<a className="nav-link" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Settings</a>
-								</li>
-							</ul>
-
-							<div className="content__mobile-tabs content__mobile-tabs--profile" id="content__mobile-tabs">
-								<div className="content__mobile-tabs-btn dropdown-toggle" role="navigation" id="mobile-tabs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<input type="button" value="Profile" />
-									<span></span>
-								</div>
-
-								<div className="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">
-									<ul className="nav nav-tabs" role="tablist">
-										<li className="nav-item"><a className="nav-link active" id="1-tab" data-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">Profile</a></li>
-
-										<li className="nav-item"><a className="nav-link" id="2-tab" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Subscription</a></li>
-
-										<li className="nav-item"><a className="nav-link" id="3-tab" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">Settings</a></li>
-									</ul>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -79,38 +52,6 @@ const Profile = () => {
 			<div className="tab-content">
 				<div className="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="1-tab">
 					<div className="row row--grid">
-						<div className="col-12 col-sm-6 col-xl-3">
-							<div className="stats">
-								<span>Premium plan</span>
-								<p>$34.99 / month</p>
-								<i className="icon ion-ios-card"></i>
-							</div>
-						</div>
-
-						<div className="col-12 col-sm-6 col-xl-3">
-							<div className="stats">
-								<span>Films watched</span>
-								<p><a href="#">1 678</a></p>
-								<i className="icon ion-ios-film"></i>
-							</div>
-						</div>
-
-						<div className="col-12 col-sm-6 col-xl-3">
-							<div className="stats">
-								<span>Your comments</span>
-								<p><a href="#">2 573</a></p>
-								<i className="icon ion-ios-chatbubbles"></i>
-							</div>
-						</div>
-
-						<div className="col-12 col-sm-6 col-xl-3">
-							<div className="stats">
-								<span>Your reviews</span>
-								<p><a href="#">1 021</a></p>
-								<i className="icon ion-ios-star-half"></i>
-							</div>
-						</div>
-
 						<div className="col-12 col-xl-6">
 							<div className="dashbox">
 								<div className="dashbox__title">
@@ -412,7 +353,7 @@ const Profile = () => {
 			</div>
 		</div>
 	</div>
-
+</section>
 
     </>
 
