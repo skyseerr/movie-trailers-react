@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useEffect, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
-
 import { useCookies } from "react-cookie";
+import AuthContext from "./contexts/AuthContext";
 
 import "./App.css";
-
-import { UserProvider } from "./contexts/UserContext";
 
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
@@ -22,20 +19,20 @@ import Profile from "./components/Profile/Profile";
 import Details from "./components/Catalog/Details/Details";
 
 function App() {
-  const [user, setUser] = useState();
   const [cookies, setCookie] = useCookies(["name"]);
-
   useEffect(() => {
     if (user !== cookies.name) {
       setUser(cookies.name);
     }
   }, []);
 
+  const [user, setUser] = useState()
+
   return (
-    <UserProvider>
+
+    <AuthContext.Provider value={user}>
     <div className="App">
         <Header />
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -48,10 +45,9 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/details/:movieId" element={<Details />} />
         </Routes>
-
         <Footer />
     </div>
-    </UserProvider>
+    </ AuthContext.Provider >
   );
 }
 

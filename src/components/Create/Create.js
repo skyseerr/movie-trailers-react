@@ -3,7 +3,6 @@ import { useNavigate, Link } from "react-router-dom";
 
 import Select from 'react-select'
 import { useCookies } from "react-cookie";
-import UserContext from "../../contexts/UserContext";
 
 import { create } from "../../services/movieService";
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
@@ -15,7 +14,6 @@ import "./Create.css";
 const Create = () => {
   const navigate = useNavigate();
 
-  const userData = useContext(UserContext);
 
   const [cookies, setCookie, removeCookie] = useCookies(["jwtToken"]);
 

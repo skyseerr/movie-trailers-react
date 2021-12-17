@@ -1,19 +1,17 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import UserContext from "../../contexts/UserContext";
-
 import "../Header/Header.css";
-
 import { ReactComponent as Logo } from "../../logo.svg";
-const Header = () => {
 
-	const { user } = UserContext()
-	console.log(user);
+
+const Header = () => {
+	
+const user = '';
 
 	const loggedInMenu = (
 		<>
-		<Link to="/profile"><p style={{color: "white", margin : "0"}}>{user}</p></Link>
+		<Link to="/profile"><p style={{color: "white", margin : "0"}}>{user.name}</p></Link>
 		<Link to="/logout" className="header__sign-in">
 		<i className="icon ion-ios-log-in"></i>
 		<span>Logout</span>
@@ -41,8 +39,9 @@ const Header = () => {
 
 						<ul className="header__nav">
 
-						{user ?
-							<>
+						{(user.name !== '') 
+						
+						?	<>
 							
 								<li className="header__nav-item">
 								<Link to="/" className="header__nav-link">Home</Link>
@@ -84,7 +83,7 @@ const Header = () => {
 									<Link to="/contacts" className="header__nav-link">Contacts</Link>
 								</li>
 							</>
-							}
+							} 
 
 
 
@@ -122,12 +121,12 @@ const Header = () => {
 								<i className="icon ion-ios-search"></i>
 							</button>
 
-							{user ? 
-
-								loggedInMenu :
-																
-								guestUserMenu
-						}
+							{	
+								(user.name !== '') 
+						
+								? loggedInMenu 
+								: guestUserMenu
+							}
 
 
 						</div>

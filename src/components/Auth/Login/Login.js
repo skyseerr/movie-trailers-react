@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, createContext } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from 'react-cookie';
@@ -6,12 +6,10 @@ import { useCookies } from 'react-cookie';
 import "../Auth.css";
 
 import { login } from "../../../services/authService";
-import UserContext from "../../../contexts/UserContext";
 import { ReactComponent as Logo } from "../../../logo.svg";
 
 const Login = () => {
 
-	const {user, setUser} = useContext(UserContext)
 	const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
 
 	const navigate = useNavigate();
@@ -22,24 +20,19 @@ const Login = () => {
 		let formData = new FormData(e.target);
 
 		let email = formData.get("email");
-		let password = formData.get("password");		
+		let password = formData.get("password");	
 	
 		login({email, password})
 		.then(result =>{
 			setCookie("jwtToken", result.userData.token, {path: "/", maxAge: 3600})
 			setCookie("name", result.userData.name, {path: "/", maxAge: 3600})
-			setUser(result.userData.name)
+			// userInfo(result.userData._id, result.userData.token, result.userData.name, result.userData.email)
 			navigate('/')
 		})
 		.catch(err=> {
 			console.log(err.error);
 		})			
 	}
-
-			    // token: result.userData.token,
-				// _id: result.userData._id,
-				// name: result.userData.name,
-				// email: result.userData.email,
 
     return(
         <div className="sign section--bg" data-bg="img/section/section.jpg">
