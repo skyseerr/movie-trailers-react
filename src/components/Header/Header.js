@@ -3,15 +3,16 @@ import { Link } from "react-router-dom";
 
 import "../Header/Header.css";
 import { ReactComponent as Logo } from "../../logo.svg";
+import { AuthContext } from "../../contexts/AuthContext";
 
 
 const Header = () => {
-	
-const user = '';
 
+	const userName = localStorage.getItem('user');
+	
 	const loggedInMenu = (
 		<>
-		<Link to="/profile"><p style={{color: "white", margin : "0"}}>{user.name}</p></Link>
+		<Link to="/profile"><p style={{color: "white", margin : "0"}}>{userName}</p></Link>
 		<Link to="/logout" className="header__sign-in">
 		<i className="icon ion-ios-log-in"></i>
 		<span>Logout</span>
@@ -20,10 +21,12 @@ const user = '';
 	)
 
 	const guestUserMenu = (
+		<>
 		<Link to="/login" className="header__sign-in">
 		<i className="icon ion-ios-log-in"></i>
 		<span>sign in</span>
-	</Link>
+		</Link>
+		</>
 	)
 
     return (
@@ -39,7 +42,7 @@ const user = '';
 
 						<ul className="header__nav">
 
-						{(user.name !== '') 
+						{userName
 						
 						?	<>
 							
@@ -122,7 +125,7 @@ const user = '';
 							</button>
 
 							{	
-								(user.name !== '') 
+								userName
 						
 								? loggedInMenu 
 								: guestUserMenu

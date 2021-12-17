@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-
-import {getProfile} from "../../services/profileService";
 import { useCookies } from 'react-cookie';
 
+import {getProfile} from "../../services/profileService";
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
+
 
 const Profile = () => {
 
-    const [cookies, setCookie, removeCookie] = useCookies(['jwtToken']);
 
+    const [cookies, setCookie, removeCookie] = useCookies(['jwtToken']);
     const [profile, setProfile] = useState({})
 
     useEffect(() => {

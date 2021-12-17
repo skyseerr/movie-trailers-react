@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import AuthContext from "./contexts/AuthContext";
+import { AuthContext } from "./contexts/AuthContext";
 
 import "./App.css";
 
@@ -19,18 +19,18 @@ import Profile from "./components/Profile/Profile";
 import Details from "./components/Catalog/Details/Details";
 
 function App() {
+  
   const [cookies, setCookie] = useCookies(["name"]);
+  const [user, setUser] = useState('');
+  const isLogged = localStorage.getItem('user');
+  
   useEffect(() => {
-    if (user !== cookies.name) {
-      setUser(cookies.name);
-    }
-  }, []);
-
-  const [user, setUser] = useState()
+    setUser({'name': localStorage.getItem('user'), '_id': localStorage.getItem('_id')});
+  }, [cookies]);
 
   return (
 
-    <AuthContext.Provider value={user}>
+    <AuthContext.Provider value={{user, setUser}}>
     <div className="App">
         <Header />
         <Routes>

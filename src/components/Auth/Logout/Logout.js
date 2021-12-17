@@ -15,12 +15,8 @@ const Logout = () => {
 
     removeCookie('name',{path:'/'});
     removeCookie('jwtToken',{path:'/'});
-    // userInfo({
-    //     _id: null,
-    //     token: null,
-    //     name: null,
-    //     email: null
-    // })
+    localStorage.removeItem('user');
+    localStorage.removeItem('_id');
     navigate('/')
     return null
 

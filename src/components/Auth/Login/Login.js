@@ -1,15 +1,16 @@
 import { useState, useContext, createContext } from "react";
-
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from 'react-cookie';
 
-import "../Auth.css";
-
 import { login } from "../../../services/authService";
 import { ReactComponent as Logo } from "../../../logo.svg";
+import { AuthContext } from "../../../contexts/AuthContext";
+
+import "../Auth.css";
 
 const Login = () => {
 
+	const {user, setUser} = useContext(AuthContext);
 	const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
 
 	const navigate = useNavigate();
@@ -26,13 +27,16 @@ const Login = () => {
 		.then(result =>{
 			setCookie("jwtToken", result.userData.token, {path: "/", maxAge: 3600})
 			setCookie("name", result.userData.name, {path: "/", maxAge: 3600})
-			// userInfo(result.userData._id, result.userData.token, result.userData.name, result.userData.email)
+			localStorage.setItem('user', result.userData.name)
+			localStorage.setItem('_id', result.userData._id)
+
 			navigate('/')
 		})
 		.catch(err=> {
 			console.log(err.error);
 		})			
 	}
+
 
     return(
         <div className="sign section--bg" data-bg="img/section/section.jpg">
