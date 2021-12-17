@@ -55,10 +55,9 @@ const Profile = () => {
 						<div className="col-12 col-xl-6">
 							<div className="dashbox">
 								<div className="dashbox__title">
-									<h3><i className="icon ion-ios-film"></i> Movies for you</h3>
+									<h3><i className="icon ion-ios-film"></i> Your Movies:</h3>
 
 									<div className="dashbox__wrap">
-										<a className="dashbox__refresh" href="#"><i className="icon ion-ios-refresh"></i></a>
 										<a className="dashbox__more" href="catalog.html">View All</a>
 									</div>
 								</div>
@@ -140,7 +139,6 @@ const Profile = () => {
 									<h3><i className="icon ion-ios-star-half"></i> Latest reviews</h3>
 
 									<div className="dashbox__wrap">
-										<a className="dashbox__refresh" href="#"><i className="icon ion-ios-refresh"></i></a>
 										<a className="dashbox__more" href="#">View All</a>
 									</div>
 								</div>

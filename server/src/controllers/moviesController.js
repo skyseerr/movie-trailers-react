@@ -38,4 +38,11 @@ router.get('/lastsix', async (req,res) => {
     res.send(lastSixMovies)
 });
 
+router.get('/my-movies/:userId', async (req,res) => {
+    let lastFiveMovies = await moviesService.getLastFiveMine((req.params.userId));
+
+    res.send(lastFiveMovies)
+});
+
+
 module.exports = router
