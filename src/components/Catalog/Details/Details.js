@@ -1,15 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import { useParams, Link } from "react-router-dom";
-
 import "../Details/Details.css";
 
 import { getOne } from "../../../services/movieService";
+import { AuthContext } from "../../../contexts/AuthContext";
+
 
 const Details = () => {
 
+  const { user } = useContext(AuthContext);
 	let { movieId } = useParams();
-	
 	const [movie, setMovie] = useState([]);
 
 	useEffect(() => {
@@ -21,8 +22,6 @@ const Details = () => {
 			  console.log(err.error);
 		  })
 		}, []);
-
-		
 
   return (
     <>
@@ -68,9 +67,17 @@ const Details = () => {
                           <span>Running time:</span> {movie.duration} min
                         </li>
                       </ul>
+
+
                       <div className="row-btn">
-                        <button className="form__btn">Edit</button>
-                        <button className="form__btn ">Delete</button>
+                        {(user._id === movie.owner )
+                         
+                        ? <>
+                            <button className="form__btn">Edit</button>
+                            <button className="form__btn ">Delete</button>
+                         </>
+                        : ''  
+                        }
                       </div>
                       <div className="card__description">
 						                {movie.description}
@@ -82,15 +89,7 @@ const Details = () => {
             </div>
 
             <div className="col-12 col-xl-6">
-              <iframe
-                width="560"
-                height="315"
-                src={movie.trailerUrl}
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
+                  <p>video here</p>
             </div>
           </div>
         </div>

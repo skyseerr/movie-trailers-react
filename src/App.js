@@ -22,7 +22,6 @@ function App() {
   
   const [cookies, setCookie] = useCookies(["name"]);
   const [user, setUser] = useState('');
-  const isLogged = localStorage.getItem('user');
   
   useEffect(() => {
     setUser({'name': localStorage.getItem('user'), '_id': localStorage.getItem('_id')});

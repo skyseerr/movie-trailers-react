@@ -1,3 +1,6 @@
 .crumbs-background {
     background: url("https://www.linkpicture.com/q/section.jpg") center center / cover no-repeat;
 }
+.breadcrumb{
+    background-color: black;
+}

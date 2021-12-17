@@ -821,7 +821,7 @@ ul {
 }
 @media (min-width: 1200px) {
   .main {
-    padding: 0 300px;
+    padding: 0 600px;
     margin-top: 0;
   }
   .main__title {

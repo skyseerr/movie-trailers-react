@@ -28,6 +28,11 @@ const Create = () => {
   // };
 
   const [bgImage, setBgImage] = useState()
+  const [genreValue, setGenreValue] = useState();
+
+  const selectGenreHandler = (e) => {
+    console.log(e.currentTarget.value);
+  }
 
   const onImageChangeHandler = (e) => {
     setBgImage(e.currentTarget.value)
@@ -117,7 +122,7 @@ const Create = () => {
                       ></textarea>
                     </div>
 
-                    <div className="col-12 col-sm-6 col-lg-3">
+                    <div className="col-sm-6">
                       <input
                         type="text"
                         className="form__input"
@@ -126,7 +131,7 @@ const Create = () => {
                       />
                     </div>
 
-                    <div className="col-12 col-sm-6 col-lg-3">
+                    <div className="col-sm-6">
                       <input
                         type="text"
                         className="form__input"
@@ -423,11 +428,11 @@ const Create = () => {
                       </select>
                     </div> */}
 
-                    <div className="col-12">
+                    <div className="col-sm-6">
                       <SelectOption name="genre"/>
 
                     </div>
-                    <div className="col-12">
+                    {/* <div className="col-12">
                       <ul className="form__radio">
                         <li>
                           <span>Item type:</span>
@@ -446,7 +451,7 @@ const Create = () => {
                           <label for="type2">TV Series</label>
                         </li>
                       </ul>
-                    </div>
+                    </div> */}
                     {/* <div className="col-12">
                       <div className="form__gallery">
                         <label id="gallery1" for="form__gallery-upload">Upload photos</label>

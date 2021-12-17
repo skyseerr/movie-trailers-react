@@ -20,7 +20,7 @@ const SelectOption = () => {
         { value: 'Western', label: 'Western' },
         { value: 'Thriller', label: 'Thriller' },
         { value: 'Other', label: 'Other' },
-      ]
+      ];
 
 
     return(
