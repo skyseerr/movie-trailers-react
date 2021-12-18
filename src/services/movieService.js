@@ -44,6 +44,51 @@ export const create = async ({
 
 }
 
+export const edit = async ( 
+    id,
+{
+    title,
+    description,
+    year,
+    duration,
+    director,
+    genre,
+    trailerUrl,
+    imageUrl
+}) => {
+
+    let movie = {
+        title,
+        description,
+        year,
+        duration,
+        director,
+        genre,
+        trailerUrl,
+        imageUrl
+    };
+
+    let res = await fetch((`${url}/${id}/edit`), {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            // 'Authorization': constructAuthHeader(token)
+
+        },
+        body: JSON.stringify(movie)
+    });
+
+    let jsonResult = await res.json();
+
+
+    if (res.ok) {
+        return jsonResult;
+    } else {
+        throw jsonResult;
+    }
+
+}
+
 export const getAllMovies = async () => {    
 
     let res = await fetch((`${url}/movies`), {
@@ -119,3 +164,25 @@ export const getLastFiveMine = async (id) => {
         throw jsonResult;
     }
 }
+
+export const deleteOne = async (id, token) => {
+    
+    let res = await fetch((`${url}/${id}/delete`), {
+        method: 'GET',
+        // headers: {
+        //     'Content-Type': 'application/json',
+        //     'Authorization': constructAuthHeader(token)
+        // },
+    });
+
+    let jsonResult = await res.json();
+
+
+    if (res.ok) {
+        return jsonResult;
+    } else {
+        throw jsonResult;
+    }
+
+}
+
