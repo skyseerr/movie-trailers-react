@@ -7,7 +7,7 @@ import { getOne } from "../../services/movieService";
 import { edit } from "../../services/movieService";
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 
-import "../Create/Create.css";
+import "./Edit.css";
 
 
 const Edit = () => {
