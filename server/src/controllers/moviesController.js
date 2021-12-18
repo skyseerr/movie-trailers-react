@@ -6,8 +6,8 @@ const commentsService = require('../services/commentsService');
 
 router.post('/create', async (req, res) => {
     try {
+
         await moviesService.create({...req.body, owner: req.user._id});
-        
         res.send(req.body);
 
     } catch (error) {
@@ -17,9 +17,8 @@ router.post('/create', async (req, res) => {
 
 router.get('/:movieId/details', async (req, res) => {
     
-    let movie = await moviesService.getOne(req.params.movieId);
-
     try {
+        let movie = await moviesService.getOne(req.params.movieId);
         res.send(movie);
     } catch (error) {
         res.status(404).send(error)
@@ -28,9 +27,14 @@ router.get('/:movieId/details', async (req, res) => {
 });
 
 router.get('/movies', async (req, res) => {
-    let movies = await moviesService.getAll();
 
-    res.send(movies);
+    try {
+        let movies = await moviesService.getAll();
+        res.send(movies);
+    } catch (error) {
+        console.log(error);
+    }
+
 });
 
 router.get('/lastsix', async (req,res) => {
