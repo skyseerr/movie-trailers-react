@@ -13,10 +13,12 @@ import Register from "./components/Auth/Register/Register";
 import ForgotPassword from "./components/Auth/ForgotPassword/ForgotPassword";
 import Catalog from "./components/Catalog/Catalog";
 import Create from "./components/Create/Create";
+import Edit from "./components/Edit/Edit";
 import Contacts from "./components/Contacts/Contacts";
 import Logout from "./components/Auth/Logout/Logout";
 import Profile from "./components/Profile/Profile";
 import Details from "./components/Catalog/Details/Details";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 function App() {
   
@@ -40,9 +42,11 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/create" element={<Create />} />
+          <Route path="/edit/:movieId" element={<Edit />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/details/:movieId" element={<Details />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
     </div>
