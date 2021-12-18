@@ -1,0 +1,63 @@
+.page-404__wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 80vh;
+    padding: 40px 0;
+  }
+  .page-404__content {
+    background-color: #080808;
+    border: 1px solid #f9ab00;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+  }
+  .page-404__title {
+    position: relative;
+    color: #f9ab00;
+    line-height: 100%;
+    font-size: 120px;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  .page-404__text {
+    text-align: center;
+    display: block;
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 20px;
+  }
+  .page-404__btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    width: 100%;
+    border-radius: 6px;
+    background-color: transparent;
+    font-size: 14px;
+    color: #fff;
+    text-transform: uppercase;
+    border: 2px solid #f9ab00;
+    margin-top: 20px;
+  }
+  .page-404__btn:hover {
+    color: #fff;
+    background-color: rgba(249,171,0,0.05);
+  }
+  @media (min-width: 576px) {
+    .page-404__content {
+      padding: 50px 60px;
+    }
+  }
