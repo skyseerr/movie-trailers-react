@@ -5,8 +5,9 @@ import { useCookies } from 'react-cookie';
 import "../Details/Details.css";
 
 import { getOne } from "../../../services/movieService";
-import { AuthContext } from "../../../contexts/AuthContext";
 import { deleteOne } from "../../../services/movieService";
+import { AuthContext } from "../../../contexts/AuthContext";
+import Comments from "./Commnets/Comments";
 
 
 const Details = () => {
@@ -113,6 +114,9 @@ const Details = () => {
           </div>
         </div>
       </section>
+
+      <Comments />
+
     </>
   );
 };

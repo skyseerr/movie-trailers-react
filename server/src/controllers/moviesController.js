@@ -2,6 +2,7 @@ const { isAuth }  = require("../middlewares/authMiddleware.js");
 const router = require('express').Router();
 
 const moviesService = require('../services/moviesService');
+const commentsService = require('../services/commentsService');
 
 router.post('/create', async (req, res) => {
     try {
@@ -58,6 +59,25 @@ router.post('/:movieId/edit', async (req, res) => {
 
     res.sendStatus(200)
 
+});
+
+router.get('/:movieId/comments', async (req, res) => {
+
+    let comments = await commentsService.getAllMovieComments(req.params.movieId);
+
+    res.send(comments)
+
+});
+
+router.post('/comment/:movieId', async (req, res) => {
+    try {
+        await commentsService.create({...req.body, owner: req.user._id, movie: req.params.movieId});
+        
+        res.send(req.body);
+
+    } catch (error) {
+        res.status(500).end();
+    }
 });
 
 module.exports = router
