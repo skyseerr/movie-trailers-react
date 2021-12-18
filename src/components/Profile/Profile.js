@@ -1,26 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useCookies } from 'react-cookie';
 
-import {getProfile} from "../../services/profileService";
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
+// import {getProfile} from "../../services/profileService";
+import { getLastFiveMine } from "../../services/movieService";
+import MyMovies from "./MyMovies/MyMovies";
 
 
 const Profile = () => {
 
-
+	const userId = localStorage.getItem('_id');
+	const userName = localStorage.getItem('user');
     const [cookies, setCookie, removeCookie] = useCookies(['jwtToken']);
-    const [profile, setProfile] = useState({})
+    // const [profile, setProfile] = useState({})
+    const [movies, setMovies] = useState([])
 
-    useEffect(() => {
 
-      getProfile(cookies.jwtToken)
-        .then(result =>{
-            setProfile(result);
-        })
-        .catch(err=> {
-            console.log(err.error);
-        })
-      }, []);
+
+	useEffect(() => {
+
+		getLastFiveMine(userId)
+		.then(result =>{
+			setMovies(result);
+		})
+		.catch(err=> {
+			console.log(err.error);
+		})
+
+	}, []);
 
     return(
 <>
@@ -38,8 +45,8 @@ const Profile = () => {
 									<img src="img/user.svg" alt="" />
 								</div>
 								<div className="profile__meta">
-									<h3>{profile.name}</h3>
-									<span>HOTFLIX ID: {profile._id}</span>
+									<h3>{userName}</h3>
+									<span>HOTFLIX ID: {userId}</span>
 								</div>
 							</div>
 						</div>
@@ -72,61 +79,7 @@ const Profile = () => {
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>
-													<div className="main__table-text"><a href="#">I Dream in Another Language</a></div>
-												</td>
-												<td>
-													<div className="main__table-text">Movie</div>
-												</td>
-												<td>
-													<div className="main__table-text main__table-text--rate"><i className="icon ion-ios-star"></i> 9.2</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div className="main__table-text"><a href="#">Benched</a></div>
-												</td>
-												<td>
-													<div className="main__table-text">Movie</div>
-												</td>
-												<td>
-													<div className="main__table-text main__table-text--rate"><i className="icon ion-ios-star"></i> 9.1</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div className="main__table-text"><a href="#">Whitney</a></div>
-												</td>
-												<td>
-													<div className="main__table-text">TV Series</div>
-												</td>
-												<td>
-													<div className="main__table-text main__table-text--rate"><i className="icon ion-ios-star"></i> 9.0</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div className="main__table-text"><a href="#">Blindspotting 2</a></div>
-												</td>
-												<td>
-													<div className="main__table-text">TV Series</div>
-												</td>
-												<td>
-													<div className="main__table-text main__table-text--rate"><i className="icon ion-ios-star"></i> 8.9</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div className="main__table-text"><a href="#">Blindspotting</a></div>
-												</td>
-												<td>
-													<div className="main__table-text">TV Series</div>
-												</td>
-												<td>
-													<div className="main__table-text main__table-text--rate"><i className="icon ion-ios-star"></i> 8.9</div>
-												</td>
-											</tr>
+										{movies.map(x => <MyMovies movie={x} />)}
 										</tbody>
 									</table>
 								</div>
@@ -136,7 +89,7 @@ const Profile = () => {
 						<div className="col-12 col-xl-6">
 							<div className="dashbox">
 								<div className="dashbox__title">
-									<h3><i className="icon ion-ios-star-half"></i> Latest reviews</h3>
+									<h3><i className="icon ion-ios-star-half"></i>Your Latest Comments:</h3>
 
 									<div className="dashbox__wrap">
 										<a className="dashbox__more" href="#">View All</a>

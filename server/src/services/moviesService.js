@@ -6,7 +6,7 @@ exports.create = (moviesData) => Movies.create(moviesData);
 
 exports.getLastSix = () => Movies.find().sort({createdAt: -1}).limit(6).lean();
 
-exports.getLastFiveMine = () => Movies.find(':userId').sort({createdAt: -1}).limit(5).lean();
+exports.getLastFiveMine = (userId) => Movies.find({'owner': userId}).sort({createdAt: -1}).limit(5).lean();
 
 exports.getAll = () => Movies.find().lean();
 

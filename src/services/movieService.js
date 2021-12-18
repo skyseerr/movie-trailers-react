@@ -101,3 +101,21 @@ export const getOne = async (id) => {
     }
 }
 
+export const getLastFiveMine = async (id) => {    
+
+    let res = await fetch((`${url}/my-movies/${id}`), {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    let jsonResult = await res.json();
+
+
+    if(res.ok) {
+        return jsonResult;
+    } else {
+        throw jsonResult;
+    }
+}
