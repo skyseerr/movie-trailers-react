@@ -1,8 +1,7 @@
 import { ReactComponent as UserIcon } from "../../../../../user.svg";
 
 const CommentBox = ({ props }) => {
-  console.log(props);
-  console.log(props.title);
+
 
   return (
     <>

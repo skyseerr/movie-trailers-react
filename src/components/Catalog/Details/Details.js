@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useCookies } from 'react-cookie';
+import Youtube from "./Youtube/Youtube";
 
 import "../Details/Details.css";
 
@@ -17,10 +18,13 @@ const Details = () => {
   const { user } = useContext(AuthContext);
 	let { movieId } = useParams();
 	const [movie, setMovie] = useState([]);
+	const [trailerUrl, setTrailerUrl] = useState();
+  let movieUrl = '';
 
 	useEffect(() => {
 		getOne(movieId)
 		  .then(result =>{
+      setTrailerUrl(result.trailerUrl)
 			setMovie(result);
 		  })
 		  .catch(err=> {
@@ -109,7 +113,7 @@ const Details = () => {
             </div>
 
             <div className="col-12 col-xl-6">
-                  <p>video here</p>
+                <Youtube param={trailerUrl}/>
             </div>
           </div>
         </div>
