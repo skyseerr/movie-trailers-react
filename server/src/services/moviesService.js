@@ -12,3 +12,7 @@ exports.getAll = () => Movies.find().lean();
 
 exports.getOne = (id) => Movies.findById(id).lean();
 
+exports.delete = (movieId) => Movies.findByIdAndDelete(movieId);
+
+exports.updateOne = (movieId, movieData) => Movies.findByIdAndUpdate(movieId, movieData);
+

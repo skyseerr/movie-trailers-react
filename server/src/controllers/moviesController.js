@@ -44,5 +44,20 @@ router.get('/my-movies/:userId', async (req,res) => {
     res.send(lastFiveMovies)
 });
 
+router.get('/:movieId/delete', async (req, res) => {
+
+    await moviesService.delete(req.params.movieId)
+ 
+    res.sendStatus(200)
+
+});
+
+router.post('/:movieId/edit', async (req, res) => {
+
+    await moviesService.updateOne(req.params.movieId, req.body);
+
+    res.sendStatus(200)
+
+});
 
 module.exports = router
