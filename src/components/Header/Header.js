@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "../Header/Header.css";
 import { ReactComponent as Logo } from "../../logo.svg";
 import { AuthContext } from "../../contexts/AuthContext";
 
 
+
 const Header = () => {
 
+	const navigate = useNavigate()
 	const userName = localStorage.getItem('user');
 	
 	const loggedInMenu = (
@@ -28,6 +30,18 @@ const Header = () => {
 		</Link>
 		</>
 	)
+
+	const searchHandler = (e) => {
+		e.preventDefault()
+
+		let formData = new FormData(e.currentTarget)
+
+		let searchParam = formData.get('search')
+
+		navigate(`/catalog/${searchParam}`);
+
+
+	}
 
     return (
 		
@@ -88,31 +102,12 @@ const Header = () => {
 							</>
 							} 
 
-
-
-
-							{/* <li className="dropdown header__nav-item">
-								<a className="dropdown-toggle header__nav-link header__nav-link--more" href="#" role="button" id="dropdownMenuMore" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i className="icon ion-ios-more"></i></a>
-
-								<ul className="dropdown-menu header__dropdown-menu scrollbar-dropdown" aria-labelledby="dropdownMenuMore">
-									<li><Link to="about.html">About</Link></li>
-									<li><Link to="profile.html">Profile</Link></li>
-									<li><Link to="contacts.html">Contacts</Link></li>
-									<li><Link to="faq.html">Help center</Link></li>
-									<li><Link to="privacy.html">Privacy policy</Link></li>
-									<li><Link to="../admin/index.html" target="_blank">Admin pages</Link></li>
-									<li><Link to="signin.html">Sign in</Link></li>
-									<li><Link to="signup.html">Sign up</Link></li>
-									<li><Link to="forgot.html">Forgot password</Link></li>
-									<li><Link to="404.html">404 Page</Link></li>
-								</ul>
-							</li> */}
 						</ul>
 
 						<div className="header__auth">
-							<form action="#" className="header__search">
-								<input className="header__search-input" type="text" placeholder="Search..." />
-								<button className="header__search-button" type="button">
+							<form action="#" className="header__search" onSubmit={searchHandler}>
+								<input className="header__search-input" type="text" placeholder="Search..." name="search" />
+								<button className="header__search-button" type="submit" >
 									<i className="icon ion-ios-search"></i>
 								</button>
 								<button className="header__search-close" type="button">

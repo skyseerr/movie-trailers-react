@@ -66,7 +66,9 @@ const Create = () => {
         imageUrl,
       },
       cookies["jwtToken"]
-    ).then(navigate("/"));
+    ).then(data => {
+      navigate('/')
+    });
   };
 
   return (

@@ -3,7 +3,7 @@ import "../Filter/Filter.css";
 const Filter = () => {
   return (
     <div className="filter">
-      <div className="container">
+      {/* <div className="container">
         <div className="row">
           <div className="col-12">
             <div className="filter__content">
@@ -151,7 +151,7 @@ const Filter = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

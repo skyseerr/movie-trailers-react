@@ -186,3 +186,22 @@ export const deleteOne = async (id, token) => {
 
 }
 
+export const getMoviesByParam = async (param) => {    
+
+    let res = await fetch((`${url}/catalog/${param}`), {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    let jsonResult = await res.json();
+
+
+    if(res.ok) {
+        return jsonResult;
+    } else {
+        throw jsonResult;
+    }
+}
+

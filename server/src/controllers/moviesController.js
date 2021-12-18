@@ -80,4 +80,18 @@ router.post('/comment/:movieId', async (req, res) => {
     }
 });
 
+router.get('/catalog/:searchId', async (req, res) => {
+    
+    console.log(req.params.searchId);
+    let movie = await moviesService.search(req.params.searchId);
+
+
+    try {
+        res.send(movie);
+    } catch (error) {
+        res.status(404).send(error)
+    }
+       
+});
+
 module.exports = router

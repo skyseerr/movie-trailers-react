@@ -63,10 +63,10 @@ const Details = () => {
                       <span className="card__rate card__rate--green">0</span>
                     </div>
                     <a
-                      href="http://www.youtube.com/watch?v=0O2aH4XLbto"
+                      href="#"
                       className="card__trailer"
                     >
-                      <i className="icon ion-ios-play-circle"></i> Watch trailer
+                      <i className="icon ion-ios-arrow-down"></i> Write comment
                     </a>
                   </div>
 
@@ -116,7 +116,6 @@ const Details = () => {
       </section>
 
       <Comments />
-
     </>
   );
 };

@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-import { getAllMovies } from "../../services/movieService";
-import Card from "./Card/Card";
+import { getMoviesByParam } from "../../services/movieService";
+
+import Card from "../Catalog/Card/Card";
 
 import Filter from "../Filter/Filter";
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 
-const Catalog = () => {
+const Search = () => {
 
+	const { param } = useParams()
 	const [movies, setMovies] = useState([]);
 
 	useEffect(() => {
-		getAllMovies()
+		getMoviesByParam(param)
 		  .then(result =>{
 			setMovies(result);
 		  })
@@ -19,7 +22,7 @@ const Catalog = () => {
 			  console.log(err.error);
 		  })
 
-		}, []);
+		}, [param]);
 
     return(
       <>
@@ -53,4 +56,4 @@ const Catalog = () => {
 
 }
 
-export default Catalog;
+export default Search;
