@@ -1,14 +1,18 @@
 import { useState, useEffect, useContext } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
-import { useParams, Link } from "react-router-dom";
 import "../Details/Details.css";
 
 import { getOne } from "../../../services/movieService";
 import { AuthContext } from "../../../contexts/AuthContext";
+import { deleteOne } from "../../../services/movieService";
 
 
 const Details = () => {
 
+  const navigate = useNavigate()
+	const [cookies, setCookie, removeCookie] = useCookies(['jwtToken']);
   const { user } = useContext(AuthContext);
 	let { movieId } = useParams();
 	const [movie, setMovie] = useState([]);
@@ -22,6 +26,21 @@ const Details = () => {
 			  console.log(err.error);
 		  })
 		}, []);
+
+  const onDeleteHendler = () => {
+
+    const movieId = movie._id;
+    const token = cookies['jwtToken'];
+
+    try {
+      deleteOne(movieId)
+      navigate('/')
+    } catch (error) {
+      console.log(error);
+    }
+
+    
+  }
 
   return (
     <>
@@ -54,7 +73,7 @@ const Details = () => {
                     <div className="card__content">
                       <ul className="card__meta">
                         <li>
-                          <span>Director:</span> Vince Gilligan
+                          <span>Director:</span> {movie.director}
                         </li>
                         <li>
                           <span>Genre:</span>
@@ -73,8 +92,8 @@ const Details = () => {
                         {(user._id === movie.owner )
                          
                         ? <>
-                            <button className="form__btn">Edit</button>
-                            <button className="form__btn ">Delete</button>
+                            <Link to={`/edit/${movie._id}`}><button className="form__btn">Edit</button></Link>
+                            <button className="form__btn " onClick={onDeleteHendler}>Delete</button>
                          </>
                         : ''  
                         }
