@@ -5,6 +5,7 @@ import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 // import {getProfile} from "../../services/profileService";
 import { getLastFiveMine } from "../../services/movieService";
 import MyMovies from "./MyMovies/MyMovies";
+import { Link } from "react-router-dom";
 
 
 const Profile = () => {
@@ -65,7 +66,7 @@ const Profile = () => {
 									<h3><i className="icon ion-ios-film"></i> Your Movies:</h3>
 
 									<div className="dashbox__wrap">
-										<a className="dashbox__more" href="catalog.html">View All</a>
+										<Link className="dashbox__more" to={`/catalog/my-movies-all/${userId}`}>View All</Link>
 									</div>
 								</div>
 
@@ -74,7 +75,7 @@ const Profile = () => {
 										<thead>
 											<tr>
 												<th>TITLE</th>
-												<th>CATEGORY</th>
+												<th>YEAR</th>
 												<th>RATING</th>
 											</tr>
 										</thead>

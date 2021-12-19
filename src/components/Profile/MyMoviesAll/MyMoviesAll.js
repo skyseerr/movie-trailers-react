@@ -1,36 +1,40 @@
-import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-import { getMoviesByCatery } from "../../../services/movieService";
-import Card from "../Card/Card";
+import { getAllMine } from "../../../services/movieService";
 
-// import Filter from "../Filter/Filter";
+import Card from "../../Catalog/Card/Card"
+
+import Filter from "../../Filter/Filter";
 import BreadCrumbs from "../../BreadCrumbs/BreadCrumbs";
 
-const Category = () => {
+const MyMoviesAll = () => {
 
-    const params = useParams()
+	const { userId } = useParams()
 	const [movies, setMovies] = useState([]);
 
+    console.log(userId);
+
 	useEffect(() => {
-		getMoviesByCatery(params.categoryName)
+		getAllMine(userId)
 		  .then(result =>{
-			setMovies(result)
+			setMovies(result);
 		  })
 		  .catch(err=> {
 			  console.log(err.error);
 		  })
 
-		}, [params]);
+		}, [userId]);
 
+        console.log(movies);
     return(
       <>
     	<div>
         
-		<BreadCrumbs props={{"name" :"Catalog", "category" : "category", "categoryName" : params}} />
+		<BreadCrumbs props={{"name" :"Catalog"}} />
 
-        {/* <Filter /> */}
-        <section className="section">
+        <Filter />
+
 		<div className="catalog">
 			<div className="container">
 				<div className="row row--grid">
@@ -48,11 +52,11 @@ const Category = () => {
 				</div> */}
 			</div>
 		</div>
-        </section>
+
 	</div>
 	</>
     )
 
 }
 
-export default Category;
+export default MyMoviesAll;

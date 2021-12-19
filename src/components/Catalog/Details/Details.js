@@ -33,6 +33,12 @@ const Details = () => {
 		  })
 		}, []);
 
+    useEffect(() =>{
+
+
+
+    },[])
+
   const onDeleteHendler = () => {
 
     const movieId = movie._id;
@@ -121,7 +127,7 @@ const Details = () => {
         </div>
       </section>
 
-      <Comments />
+      <Comments props={genre} />
     </>
   );
 };

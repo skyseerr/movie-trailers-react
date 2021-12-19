@@ -8,6 +8,8 @@ exports.getLastSix = () => Movies.find().sort({createdAt: -1}).limit(6).lean();
 
 exports.getLastFiveMine = (userId) => Movies.find({'owner': userId}).sort({createdAt: -1}).limit(5).lean();
 
+exports.getAllMine = (userId) => Movies.find({'owner': userId}).lean();
+
 exports.getAll = () => Movies.find().lean();
 
 exports.getOne = (id) => Movies.findById(id).lean();

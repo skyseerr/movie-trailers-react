@@ -44,10 +44,16 @@ router.get('/lastsix', async (req,res) => {
     res.send(lastSixMovies)
 });
 
-router.get('/my-movies/:userId', async (req,res) => {
+router.get('/my-movies/:userId', async (req, res) => {
     let lastFiveMovies = await moviesService.getLastFiveMine((req.params.userId));
 
     res.send(lastFiveMovies)
+});
+
+router.get('/my-movies-all/:userId', async (req, res) => {
+    let allMyMovies = await moviesService.getAllMine((req.params.userId));
+
+    res.send(allMyMovies)
 });
 
 router.get('/:movieId/delete', async (req, res) => {

@@ -1,15 +1,17 @@
-import { useContext } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import { useCookies } from "react-cookie";
 
 import "../Auth.css";
 
+import Popuptest from "../../Popups/Popup";
 import { register } from "../../../services/authService";
 import { ReactComponent as Logo } from "../../../logo.svg";
 
 
-const Register = () => {
+const Register = () => { 
+
+  const [error, setError] = useState()
   const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
 
   const navigate = useNavigate();
@@ -33,7 +35,6 @@ const Register = () => {
 			maxAge: 3600,
 		  });
 		  setCookie("name", result.userData.name, { path: "/", maxAge: 3600 });
-		  // setUser(result.userData.name);
 		  navigate("/");
 		})
 		.catch((err) => {
@@ -41,7 +42,7 @@ const Register = () => {
 		});
 	  } else {
 		  //show error
-		console.log('Passwords dont match!');
+      setError('Passwords dont match!')
 	  }
 
   };
@@ -56,6 +57,13 @@ const Register = () => {
               <Link to="/" className="header__logo">
 							<Logo />
 					  	</Link>
+
+              <div className="errorMsg">
+                {/* <Popuptest /> */}
+                {/* {error
+                ? <p>{error}</p>
+                : <p>''</p>} */}
+              </div>
 
                 <div className="sign__group">
                   <input

@@ -165,6 +165,25 @@ export const getLastFiveMine = async (id) => {
     }
 }
 
+export const getAllMine = async (id) => {    
+
+    let res = await fetch((`${url}/my-movies-all/${id}`), {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    let jsonResult = await res.json();
+
+
+    if(res.ok) {
+        return jsonResult;
+    } else {
+        throw jsonResult;
+    }
+}
+
 export const deleteOne = async (id, token) => {
     
     let res = await fetch((`${url}/${id}/delete`), {
@@ -215,8 +234,6 @@ export const getMoviesByCatery = async (categoryName) => {
     });
 
     let jsonResult = await res.json();
-
-    console.log(jsonResult);
 
     if(res.ok) {
         return jsonResult;
