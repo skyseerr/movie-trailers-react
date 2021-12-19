@@ -1,8 +1,14 @@
+import GoogleMaps from "../Contacts/GoogleMaps/GoogleMaps";
+
 import "../Contacts/Contacts.css";
 
 const Contacts = () => {
 
     return(
+
+	<>
+
+    <GoogleMaps />
 	<section className="section">
 		<div className="container">
 			<div className="row">
@@ -59,7 +65,7 @@ const Contacts = () => {
 			</div>
 		</div>
 	</section>
-
+	</>
     )
 
 }

@@ -12,7 +12,6 @@ const LastSix = () => {
 		getLastSix()
 		.then((result) => {
 			setMovies(result);
-			console.log(`mounted`);
 		})
 		.catch((err) => {
 			console.log(err.error);
