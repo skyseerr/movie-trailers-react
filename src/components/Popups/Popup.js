@@ -1,16 +1,35 @@
-import React from 'react';
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+// import Warper from './Warper';
+import Popup from "reactjs-popup";
 
+const ControlledPopup = ({ error }) => {
+    const [errorMessage, setErrorMessage] = useState();
+    const [open, setOpen] = useState(false);  
+    const closeModal = () => {
+        setErrorMessage();
+        setOpen(false);
+    };
+    
+    useEffect(() => {
+    if (error) {
+        setErrorMessage(error);
+        setOpen(true);
+    }
+  }, [error]);
 
-const Popuptest = () => {
+  return (
+    <div>
+      <Popup open={open} closeOnDocumentClick onClose={closeModal}>
+        <div className="modal">
+          {/* <a href="javascript: void(0)" className="close" onClick={closeModal}>
+            &times;
+          </a> */}
+            {errorMessage}
+        </div>
+      </Popup>
+    </div>
+  );
+};
 
-    return(
-        <Popup trigger={<button> Trigger</button>} position="right center">
-        <div>Popup content here !!</div>
-        </Popup>
-    )
-
-}
-
-export default Popuptest;
+export default ControlledPopup;

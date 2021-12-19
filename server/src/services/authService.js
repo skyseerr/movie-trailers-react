@@ -6,10 +6,12 @@ exports.login = async ({email, password}) => {
 
     let user = await User.findOne({ email });
 
+    
     if(!user){
         throw new Error('Invalid username or password');
     }
-
+    
+    console.log(password);
     let isValid = await user.validatePassword(password);
 
     if(!isValid){

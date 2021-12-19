@@ -8,7 +8,7 @@ const Contacts = () => {
 
 	<>
 
-    <GoogleMaps />
+    {/* <GoogleMaps /> */}
 	<section className="section">
 		<div className="container">
 			<div className="row">

@@ -31,13 +31,8 @@ const Details = () => {
 		  .catch(err=> {
 			  console.log(err.error);
 		  })
-		}, []);
+		}, [movieId]);
 
-    useEffect(() =>{
-
-
-
-    },[])
 
   const onDeleteHendler = () => {
 
@@ -73,12 +68,7 @@ const Details = () => {
                       <img src={movie.imageUrl} alt="" />
                       <span className="card__rate card__rate--green">0</span>
                     </div>
-                    <a
-                      href="#"
-                      className="card__trailer"
-                    >
-                      <i className="icon ion-ios-arrow-down"></i> Write comment
-                    </a>
+
                   </div>
 
                   <div className="col-12 col-md-8 col-lg-9 col-xl-7">
@@ -102,15 +92,26 @@ const Details = () => {
 
 
                       <div className="row-btn">
-                        {(user._id === movie.owner )
+                        {((user._id === movie.owner )
                          
                         ? <>
                             <Link to={`/edit/${movie._id}`}><button className="form__btn">Edit</button></Link>
                             <button className="form__btn " onClick={onDeleteHendler}>Delete</button>
                          </>
-                        : ''  
+                        :
+                        <div class="comments__rate">
+                          <button type="button"><i class="icon ion-md-thumbs-up"></i></button>
+                          <button type="button"><i class="icon ion-md-thumbs-down"></i></button>
+                        </div>  
+                        )
                         }
                       </div>
+                      
+                      <div className="row-btn">
+                    
+                    
+
+                          </div>
                       <div className="card__description">
 						                {movie.description}
                       </div>

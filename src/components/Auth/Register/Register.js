@@ -1,50 +1,52 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 import "../Auth.css";
 
-import Popuptest from "../../Popups/Popup";
+import ControlledPopup from "../../Popups/Popup";
 import { register } from "../../../services/authService";
 import { ReactComponent as Logo } from "../../../logo.svg";
 
-
 const Register = () => { 
-
-  const [error, setError] = useState()
-  const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
 
   const navigate = useNavigate();
 
+  const [error, setError] = useState('')
+  const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
+
+  useEffect(() => {
+    setError('')
+
+  },[error])
+  
   const registerFormHandler = (e) => {
 	  e.preventDefault();
 
+
 	  let formData = new FormData(e.target);
-
-	  let name = formData.get('name')
-	  let email = formData.get('email')
-	  let password = formData.get('password')
-	  let repassword = formData.get('repassword')
-
+	  let name = formData.get('name');
+	  let email = formData.get('email');
+	  let password = formData.get('password');
+	  let repassword = formData.get('repassword');
 
 	  if(password === repassword){
-		register({ name, email, password })
-		.then((result) => {
-		  setCookie("jwtToken", result.userData.token, {
-			path: "/",
-			maxAge: 3600,
-		  });
-		  setCookie("name", result.userData.name, { path: "/", maxAge: 3600 });
-		  navigate("/");
-		})
-		.catch((err) => {
-		  console.log(err.error);
-		});
-	  } else {
-		  //show error
-      setError('Passwords dont match!')
-	  }
 
+		    register({ name, email, password })
+		    .then((result) => {
+		      setCookie("jwtToken", result.userData.token, {
+		    	path: "/",
+		    	maxAge: 3600,
+		      });
+		      setCookie("name", result.userData.name, { path: "/", maxAge: 3600 })
+		      navigate("/")
+		    })
+		    .catch((err) => {
+		      setError(err)
+		    })
+	      } else {
+           setError('Passwords dont match!')
+	      }
   };
 
   return (
@@ -59,10 +61,7 @@ const Register = () => {
 					  	</Link>
 
               <div className="errorMsg">
-                {/* <Popuptest /> */}
-                {/* {error
-                ? <p>{error}</p>
-                : <p>''</p>} */}
+                <ControlledPopup error={error} />
               </div>
 
                 <div className="sign__group">
@@ -100,18 +99,6 @@ const Register = () => {
 					name="repassword"
                   />
                 </div>
-
-                {/* <div className="sign__group sign__group--checkbox">
-                  <input
-                    id="remember"
-                    name="remember"
-                    type="checkbox"
-                    checked="checked"
-                  />
-                  <label for="remember">
-                    I agree to the <Link to="privacy.html">Privacy Policy</Link>
-                  </label>
-                </div> */}
 
                 <button className="sign__btn" type="submit">
                   Sign up

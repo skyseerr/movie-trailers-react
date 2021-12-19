@@ -1,10 +1,13 @@
 import React from 'react';
 import Select from 'react-select'
+import makeAnimated from 'react-select/animated';
 
 import "../SelectOption/SelectOption.css";
 
 const SelectOption = () => {
 
+  const animatedComponents = makeAnimated();
+  
     const options = [
         { value: 'Action', label: 'Action' },
         { value: 'Animation', label: 'Animation' },
@@ -28,6 +31,7 @@ const SelectOption = () => {
         defaultValue
         isMulti
         name="ganre"
+        components={animatedComponents}
         options={options}
         className="basic-multi-select"
         classNamePrefix="Select genre"

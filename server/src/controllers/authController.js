@@ -40,7 +40,6 @@ router.post('/register', async (req, res) => {
 
 
     try {
-
         //registration =>
         await authService.register({
             name,
@@ -53,7 +52,6 @@ router.post('/register', async (req, res) => {
             password
         })
 
-        // res.cookie(AUTH_COOKIE_NAME, token);
         res.send({
             userData
         });

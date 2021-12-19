@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-import Select from "react-select";
+import Select from 'react-select'
+import makeAnimated from 'react-select/animated';
 import { useCookies } from "react-cookie";
 
 import { create } from "../../services/movieService";
@@ -16,22 +17,24 @@ const Create = () => {
 
   const [cookies, setCookie, removeCookie] = useCookies(["jwtToken"]);
 
-  const options = [
-    { value: "Action", label: "Action" },
-    { value: "Animation", label: "Animation" },
-    { value: "Comedy", label: "Comedy" },
-    { value: "Crime", label: "Crime" },
-    { value: "Drama", label: "Drama" },
-    { value: "Fantasy", label: "Fantasy" },
-    { value: "Historical", label: "Historical" },
-    { value: "Horror", label: "Horror" },
-    { value: "Romance", label: "Romance" },
-    { value: "Science-fiction", label: "Science-fiction" },
-    { value: "Thriller", label: "Thriller" },
-    { value: "Western", label: "Western" },
-    { value: "Thriller", label: "Thriller" },
-    { value: "Other", label: "Other" },
-  ];
+  const animatedComponents = makeAnimated();
+  
+    const options = [
+        { value: 'Action', label: 'Action' },
+        { value: 'Animation', label: 'Animation' },
+        { value: 'Comedy', label: 'Comedy' },
+        { value: 'Crime', label: 'Crime' },
+        { value: 'Drama', label: 'Drama' },
+        { value: 'Fantasy', label: 'Fantasy' },
+        { value: 'Historical', label: 'Historical' },
+        { value: 'Horror', label: 'Horror' },
+        { value: 'Romance', label: 'Romance' },
+        { value: 'Science-fiction', label: 'Science-fiction' },
+        { value: 'Thriller', label: 'Thriller' },
+        { value: 'Western', label: 'Western' },
+        { value: 'Thriller', label: 'Thriller' },
+        { value: 'Other', label: 'Other' },
+      ];
 
   // const [genreValue, setGenreValue] = useState([]);
 
@@ -44,24 +47,21 @@ const Create = () => {
   // };
 
   const [bgImage, setBgImage] = useState();
-  const [genreValue, setGenreValue] = useState();
-
-  const selectGenreHandler = (e) => {
-    setGenreValue(selectedOption);
-    console.log(`Option selected:`, selectedOption);
-  };
+  const [selectedValue, setSelectedValue] = useState([]);
 
   const onImageChangeHandler = (e) => {
     setBgImage(e.currentTarget.value);
   };
 
-  const genreValueHandler = (genreValue) => {
-    setGenreValue();
+  const valueSelectHandler = val => {
+    setSelectedValue(val.map(x=> x.value));
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
 
+    const genre = selectedValue;
+    
     const {
       title,
       description,
@@ -69,7 +69,6 @@ const Create = () => {
       duration,
       director,
       country,
-      genre,
       trailerUrl,
       imageUrl,
     } = Object.fromEntries(new FormData(e.target));
@@ -91,6 +90,7 @@ const Create = () => {
       navigate("/");
     });
   };
+
 
   return (
     <>
@@ -171,16 +171,8 @@ const Create = () => {
                       </div>
 
                       {/* <div className="col-12 col-sm-6 col-lg-3">
-                      <select
-                        className="js-example-basic-single"
-                        id="quality"
-                        name="quality"
-                      >
-                        <option value=""></option>
-                        <option value="FullHD">FullHD</option>
-                        <option value="HD">HD</option>
-                      </select>
-                    </div> */}
+                        
+                      </div> */}
 
                       <div className="col-sm-6">
                         <input
@@ -190,11 +182,16 @@ const Create = () => {
                           name="director"
                         />
                       </div>
+
                       <div className="col-sm-6">
                         <Select
-                          value={selectedOption}
-                          onChange={this.handleChange}
+                          defaultValue
+                          isMulti
+                          onChange={valueSelectHandler}
+                          components={animatedComponents}
                           options={options}
+                          className="basic-multi-select"
+                          classNamePrefix="Select genre"
                         />
                       </div>
                     </div>
