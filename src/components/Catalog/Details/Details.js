@@ -19,13 +19,14 @@ const Details = () => {
 	let { movieId } = useParams();
 	const [movie, setMovie] = useState([]);
 	const [trailerUrl, setTrailerUrl] = useState();
-  let movieUrl = '';
+  const [genre, setGenre] = useState([]);
 
 	useEffect(() => {
 		getOne(movieId)
 		  .then(result =>{
       setTrailerUrl(result.trailerUrl)
 			setMovie(result);
+			setGenre(result.genre);
 		  })
 		  .catch(err=> {
 			  console.log(err.error);
@@ -82,7 +83,8 @@ const Details = () => {
                         </li>
                         <li>
                           <span>Genre:</span>
-						                {movie.genre}
+                            {genre.map(x => <Link to={`/catalog/${x.toLowerCase()}`}>{x}</Link>)}
+
                         </li>
                         <li>
                           <span>Release year:</span> {movie.year}
