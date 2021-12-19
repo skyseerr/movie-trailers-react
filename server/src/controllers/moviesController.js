@@ -2,6 +2,7 @@ const { isAuth }  = require("../middlewares/authMiddleware.js");
 const router = require('express').Router();
 
 const moviesService = require('../services/moviesService');
+const getByCategory = require('../services/moviesService');
 const commentsService = require('../services/commentsService');
 
 router.post('/create', async (req, res) => {
@@ -91,6 +92,17 @@ router.get('/catalog/:searchId', async (req, res) => {
 
 
     try {
+        res.send(movie);
+    } catch (error) {
+        res.status(404).send(error)
+    }
+       
+});
+
+router.get('/catalog/category/:categoryName', async (req, res) => {
+    
+    try {
+        let movie = await moviesService.getByCategory(req.params.categoryName);
         res.send(movie);
     } catch (error) {
         res.status(404).send(error)

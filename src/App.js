@@ -20,6 +20,7 @@ import Profile from "./components/Profile/Profile";
 import Details from "./components/Catalog/Details/Details";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import Search from "./components/Search/Search";
+import Category from "./components/Catalog/Category/Category";
 
 function App() {
   
@@ -43,6 +44,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/catalog/:param" element={<Search />} />
+          <Route path="/catalog/category/:categoryName" element={<Category />} />
           <Route path="/create" element={<Create />} />
           <Route path="/edit/:movieId" element={<Edit />} />
           <Route path="/contacts" element={<Contacts />} />

@@ -83,7 +83,7 @@ const Details = () => {
                         </li>
                         <li>
                           <span>Genre:</span>
-                            {genre.map(x => <Link to={`/catalog/${x.toLowerCase()}`}>{x}</Link>)}
+                            {genre.map(x => <Link to={`/catalog/category/${x.toLowerCase()}`}>{x}</Link>)}
 
                         </li>
                         <li>

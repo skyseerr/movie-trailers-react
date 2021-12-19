@@ -205,3 +205,23 @@ export const getMoviesByParam = async (param) => {
     }
 }
 
+export const getMoviesByCatery = async (categoryName) => {    
+
+    let res = await fetch((`${url}/catalog/category/${categoryName}`), {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    let jsonResult = await res.json();
+
+    console.log(jsonResult);
+
+    if(res.ok) {
+        return jsonResult;
+    } else {
+        throw jsonResult;
+    }
+}
+
