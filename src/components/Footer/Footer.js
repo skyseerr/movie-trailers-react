@@ -3,6 +3,16 @@ import { ReactComponent as Logo } from "../../logo.svg";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+
+  const scrollToTop = () =>{
+    window.scrollTo({
+      top: 0, 
+      behavior: 'smooth'
+      /* you can also use 'auto' behaviour
+         in place of 'smooth' */
+    });
+  };
+
   return (
     <footer className="footer">
       <div className="container">
@@ -26,7 +36,7 @@ const Footer = () => {
                 <Link to="/privacy">Privacy policy</Link>
               </nav>
 
-              <button className="footer__back" type="button">
+              <button onClick={scrollToTop} className="footer__back" type="button">
                 <i className="icon ion-ios-arrow-round-up"></i>
               </button>
             </div>
