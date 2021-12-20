@@ -4,13 +4,13 @@ exports.create = (moviesData) => Movies.create(moviesData);
 
 // exports.getTopMovies = () => Movies.find().sort({createdAt: -1}).limit(3).lean();
 
-exports.getLastSix = () => Movies.find().sort({createdAt: -1}).limit(6).lean();
+exports.getLastSix = () => Movies.find().sort({year: -1}).limit(6).lean();
 
 exports.getLastFiveMine = (userId) => Movies.find({'owner': userId}).sort({createdAt: -1}).limit(5).lean();
 
 exports.getAllMine = (userId) => Movies.find({'owner': userId}).lean();
 
-exports.getAll = () => Movies.find().lean();
+exports.getAll = () => Movies.find().sort({createdAt: -1}).lean();
 
 exports.getOne = (id) => Movies.findById(id).lean();
 
