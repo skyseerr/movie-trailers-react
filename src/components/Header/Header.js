@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ReactComponent as UserLogo } from "../../user.svg";
 
 import "../Header/Header.css";
 import { ReactComponent as Logo } from "../../logo.svg";
@@ -14,7 +15,7 @@ const Header = () => {
 	
 	const loggedInMenu = (
 		<>
-		<Link to="/profile"><p style={{color: "white", margin : "0"}}>{userName}</p></Link>
+		<Link to="/profile"><p style={{color: "white", margin : "0", display: "flex", alignItems: "center"}}> <UserLogo /> &nbsp; {userName}</p></Link>
 		<Link to="/logout" className="header__sign-in">
 		<i className="icon ion-ios-log-in"></i>
 		<span>Logout</span>
