@@ -49,12 +49,14 @@ const Create = () => {
   const [bgImage, setBgImage] = useState();
   const [selectedValue, setSelectedValue] = useState([]);
 
-  const onImageChangeHandler = (e) => {
-    setBgImage(e.currentTarget.value);
-  };
+
 
   const valueSelectHandler = val => {
     setSelectedValue(val.map(x=> x.value));
+  };
+
+  const onImageChangeHandler = (e) => {
+    setBgImage(e.currentTarget.value);
   };
 
   const submitHandler = (e) => {

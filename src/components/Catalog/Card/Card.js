@@ -15,7 +15,7 @@ const Card = ({
                 <Link to={`/details/${movie._id}`} className="card__play">
                     <i className="icon ion-ios-play"></i>
                 </Link>
-                <span className="card__rate card__rate--green">0</span>
+                {/* <span className="card__rate card__rate--green">0</span> */}
             </div>
             <div className="card__content">
                 <h3 className="card__title"><Link to={`/details/${movie._id}`}>{movie.title}</Link></h3>
