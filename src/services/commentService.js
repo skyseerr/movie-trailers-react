@@ -1,7 +1,7 @@
 import { url } from "../constants/urlConstant";
 import constructAuthHeader from "../utils/tokenUtil";
 
-export const create = async ({ title, review }, token, movieId) => {
+export const create = async ({ title, review }, token, movieId, userName) => {
 
     let comment = { title, review };
 

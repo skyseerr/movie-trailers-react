@@ -24,7 +24,7 @@ const Comments = (genre) => {
         let review = formData.get('review');
         let userName = localStorage.getItem('user');
         
-        create({title, review, userName}, cookies["jwtToken"], movieId);
+        create({title, review, userName}, cookies["jwtToken"], movieId, userName);
 
         e.currentTarget.title.value = '';
         e.currentTarget.review.value = '';

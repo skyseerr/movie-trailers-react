@@ -17,7 +17,10 @@ let commentsSchema = new mongoose.Schema({
     movie: {
         type: mongoose.Types.ObjectId,
         ref: 'Movie',
-    }
+    },
+    userName: {
+        type: String,
+    },
 
 }, {
     timestamps: true
