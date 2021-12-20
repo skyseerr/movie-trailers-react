@@ -21,6 +21,7 @@ const Create = () => {
   
     const options = [
         { value: 'Action', label: 'Action' },
+        { value: 'Adventure', label: 'Adventure' },
         { value: 'Animation', label: 'Animation' },
         { value: 'Comedy', label: 'Comedy' },
         { value: 'Crime', label: 'Crime' },

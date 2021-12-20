@@ -12,7 +12,10 @@ const MyMovies = ({movie}) => {
         		<div className="main__table-text">{movie.year}</div>
         	</td>
         	<td>
-        		<div className="main__table-text main__table-text--rate"><i className="icon ion-ios-star"></i> 0</div>
+        		<div className="main__table-text main__table-text--rate">{movie.createdAt.replace('T', ' / ').slice(0, 21)}</div>
+        	</td>
+			<td>
+        		<div className="main__table-text main__table-text--rate">{movie.director}</div>
         	</td>
         </tr>
         </>

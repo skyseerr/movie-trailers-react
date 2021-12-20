@@ -24,7 +24,7 @@ export const create = async ({ title, review }, token, movieId) => {
         throw jsonResult;
     }
 
-}
+};
 
 export const getAllComments = async (movieId) => {    
 
@@ -43,4 +43,23 @@ export const getAllComments = async (movieId) => {
     } else {
         throw jsonResult;
     }
-}
+};
+
+export const getAllMyComments = async (userId) => {    
+
+    let res = await fetch((`${url}/${userId}/comments`), {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    let jsonResult = await res.json();
+
+
+    if(res.ok) {
+        return jsonResult;
+    } else {
+        throw jsonResult;
+    }
+};

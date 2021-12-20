@@ -4,6 +4,7 @@ const router = require('express').Router();
 const userService = require('../services/userService');
 
 router.get('/', isAuth, async (req, res) => {
+    
     let user = await userService.getOne(req.user._id);
 
     try {
@@ -14,4 +15,4 @@ router.get('/', isAuth, async (req, res) => {
     
 });
 
-module.exports = router
+module.exports = router;
