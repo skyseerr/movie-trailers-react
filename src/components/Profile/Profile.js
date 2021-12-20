@@ -60,7 +60,7 @@ const Profile = () => {
 			<div className="tab-content">
 				<div className="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="1-tab">
 					<div className="row row--grid">
-						<div className="col-12 col-xl-6">
+						<div className="col-12">
 							<div className="dashbox">
 								<div className="dashbox__title">
 									<h3><i className="icon ion-ios-film"></i> Your Movies:</h3>
@@ -76,92 +76,12 @@ const Profile = () => {
 											<tr>
 												<th>TITLE</th>
 												<th>YEAR</th>
-												<th>RATING</th>
+												<th>CREATED AT</th>
+												<th>DIRECTOR</th>
 											</tr>
 										</thead>
 										<tbody>
 										{movies.map(x => <MyMovies movie={x} />)}
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-
-						<div className="col-12 col-xl-6">
-							<div className="dashbox">
-								<div className="dashbox__title">
-									<h3><i className="icon ion-ios-star-half"></i>Your Latest Comments:</h3>
-
-									<div className="dashbox__wrap">
-										<a className="dashbox__more" href="#">View All</a>
-									</div>
-								</div>
-
-								<div className="dashbox__table-wrap">
-									<table className="main__table main__table--dash">
-										<thead>
-											<tr>
-												<th>ITEM</th>
-												<th>AUTHOR</th>
-												<th>RATING</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>
-													<div className="main__table-text"><a href="#">I Dream in Another Language</a></div>
-												</td>
-												<td>
-													<div className="main__table-text">John Doe</div>
-												</td>
-												<td>
-													<div className="main__table-text main__table-text--rate"><i className="icon ion-ios-star"></i> 7.2</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div className="main__table-text"><a href="#">Benched</a></div>
-												</td>
-												<td>
-													<div className="main__table-text">John Doe</div>
-												</td>
-												<td>
-													<div className="main__table-text main__table-text--rate"><i className="icon ion-ios-star"></i> 6.3</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div className="main__table-text"><a href="#">Whitney</a></div>
-												</td>
-												<td>
-													<div className="main__table-text">John Doe</div>
-												</td>
-												<td>
-													<div className="main__table-text main__table-text--rate"><i className="icon ion-ios-star"></i> 8.4</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div className="main__table-text"><a href="#">Blindspotting</a></div>
-												</td>
-												<td>
-													<div className="main__table-text">John Doe</div>
-												</td>
-												<td>
-													<div className="main__table-text main__table-text--rate"><i className="icon ion-ios-star"></i> 9.0</div>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div className="main__table-text"><a href="#">I Dream in Another Language</a></div>
-												</td>
-												<td>
-													<div className="main__table-text">John Doe</div>
-												</td>
-												<td>
-													<div className="main__table-text main__table-text--rate"><i className="icon ion-ios-star"></i> 7.7</div>
-												</td>
-											</tr>
 										</tbody>
 									</table>
 								</div>
