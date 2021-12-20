@@ -39,7 +39,7 @@ const Comments = (genre) => {
 		  .catch(err=> {
 			  console.log(err.error);
 		  })
-		}, []);
+		}, [comments]);
 
 
     return(
