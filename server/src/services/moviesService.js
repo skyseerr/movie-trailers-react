@@ -18,7 +18,7 @@ exports.delete = (movieId) => Movies.findByIdAndDelete(movieId);
 
 exports.updateOne = (movieId, movieData) => Movies.findByIdAndUpdate(movieId, movieData);
 
-exports.search = (param) => Movies.find({title: { $regex: param, $options: 'i' } }).limit(12).lean();
+exports.search = (param) => Movies.find({title: { $regex: param, $options: 'i' } }).limit(18).lean();
 
 exports.getByCategory = (param) => Movies.find({genre: { $regex: param, $options: 'i' } }).limit(18).lean();
 

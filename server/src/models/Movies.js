@@ -34,6 +34,10 @@ let moviesSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    rate: {
+        type: Number,
+        default: 0,
+    },
     owner: {
         type: mongoose.Types.ObjectId,
         ref: 'User',

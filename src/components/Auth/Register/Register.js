@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 
 import "../Auth.css";
 
-import ControlledPopup from "../../Popups/Popup";
+// import ControlledPopup from "../../Popups/Popup";
 import { register } from "../../../services/authService";
 import { ReactComponent as Logo } from "../../../logo.svg";
 
@@ -61,7 +61,7 @@ const Register = () => {
 					  	</Link>
 
               <div className="errorMsg">
-                <ControlledPopup error={error} />
+                {/* <ControlledPopup error={error} /> */}
               </div>
 
                 <div className="sign__group">
