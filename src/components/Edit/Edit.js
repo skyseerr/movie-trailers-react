@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import SelectOption from "../Create/SelectOption/SelectOption";
 import { useCookies } from "react-cookie";
+import { AuthContext } from "../../contexts/AuthContext";
 
 import { getOne } from "../../services/movieService";
 import { edit } from "../../services/movieService";
@@ -11,6 +12,8 @@ import "./Edit.css";
 
 
 const Edit = () => {
+
+  const {user, setUser} = useContext(AuthContext)
   const navigate = useNavigate();
   const { movieId } = useParams()
   const [cookies, setCookie, removeCookie] = useCookies(["jwtToken"]);
@@ -20,8 +23,13 @@ const Edit = () => {
   useEffect(() => {
     getOne(movieId)
       .then(result =>{
-        setMovie(result)
-        setBgImage(result.imageUrl)
+        if(result.owner === user._id){
+          setMovie(result)
+          setBgImage(result.imageUrl)
+        } else{
+          navigate(`/details/${movieId}`)
+        }
+
 
       })
       .catch(err=> {
@@ -50,7 +58,7 @@ const Edit = () => {
       imageUrl,
     } = Object.fromEntries(new FormData(e.target));
 
-    edit(
+      edit(
         movieId,
       {
         title,
@@ -85,8 +93,7 @@ const Edit = () => {
                 <div className="col-12 col-md-5 form__cover">
                   <div className="row row--form">
                     <div className="col-12 col-sm-6 col-md-12">
-                      <div className="form__img" style={{"backgroundImage" : `url("${bgImage}")`, "backgroundSize": "cover",
-    "backgroundRepeat": "noRepeat"}}>
+                      <div className="form__img" style={{"backgroundImage" : `url("${bgImage}")`, "backgroundSize": "cover", "backgroundRepeat": "noRepeat"}}>
                         <label for="form__img-upload">
                           {bgImage
                             ? <p></p>

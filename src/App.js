@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { AuthContext } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/Auth/ProtectedRoute/ProtectedRoute";
 
 import "./App.css";
 
@@ -23,6 +24,7 @@ import Search from "./components/Search/Search";
 import Category from "./components/Catalog/Category/Category";
 import MyMoviesAll from "./components/Profile/MyMoviesAll/MyMoviesAll";
 
+
 function App() {
   
   const [cookies, setCookie] = useCookies(["name"]);
@@ -39,18 +41,18 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<ProtectedRoute user={user}><Login /></ProtectedRoute>} />
+          <Route path="/register" element={<ProtectedRoute user={user}><Register /></ProtectedRoute>} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/catalog/:param" element={<Search />} />
           <Route path="/catalog/category/:categoryName" element={<Category />} />
           <Route path="/catalog/my-movies-all/:userId" element={<MyMoviesAll />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/edit/:movieId" element={<Edit />} />
+          <Route path="/create" element={<ProtectedRoute user={user}><Create /></ProtectedRoute>} />
+          <Route path="/edit/:movieId" element={<ProtectedRoute user={user}><Edit /></ProtectedRoute>} />
           <Route path="/contacts" element={<Contacts />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<ProtectedRoute user={user}><Profile /></ProtectedRoute>} />
           <Route path="/details/:movieId" element={<Details />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>

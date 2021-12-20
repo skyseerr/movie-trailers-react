@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 import { useCookies } from 'react-cookie';
 
@@ -7,7 +8,7 @@ import { useCookies } from 'react-cookie';
 
 const Logout = () => {
     
-    // const {user, setUser} = useContext(UserContext);
+    const {user, setUser} = useContext(AuthContext);
 
     const navigate = useNavigate()
 
@@ -17,6 +18,7 @@ const Logout = () => {
     removeCookie('jwtToken',{path:'/'});
     localStorage.removeItem('user');
     localStorage.removeItem('_id');
+    setUser(null)
     navigate('/')
     return null
 

@@ -40,8 +40,12 @@ const Details = () => {
     const token = cookies['jwtToken'];
 
     try {
-      deleteOne(movieId)
-      navigate('/')
+      if(movie.owner === user._id){
+        deleteOne(movieId)
+        navigate('/')
+      }else{
+        navigate(`/details/${movieId}`)
+      }
     } catch (error) {
       console.log(error);
     }
@@ -100,8 +104,7 @@ const Details = () => {
                          </>
                         :
                         <div class="comments__rate">
-                          <button type="button"><i class="icon ion-md-thumbs-up"></i></button>
-                          <button type="button"><i class="icon ion-md-thumbs-down"></i></button>
+                          <p></p>
                         </div>  
                         )
                         }
