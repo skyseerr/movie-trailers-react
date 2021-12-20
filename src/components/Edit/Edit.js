@@ -7,6 +7,7 @@ import { edit } from "../../services/movieService";
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 
 import "./Edit.css";
+import "../Create/SelectOption/SelectOption.css";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 

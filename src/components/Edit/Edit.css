@@ -4,11 +4,22 @@
     border: 1px solid #222028;
     border-radius: 6px;
   }
+  .basic-multi-select:focus{
+    outline: none;
+  }
   .form__title {
     font-size: 18px;
     font-weight: 400;
     color: #fff;
     margin-bottom: 20px;
+  }
+
+  .genre__control{
+    height: 42px;
+  }
+
+  .basic-multi-select{
+    border: none;
   }
   .form__label {
     font-weight: 400;
