@@ -1,36 +1,50 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import SelectOption from "../Create/SelectOption/SelectOption";
 import { useCookies } from "react-cookie";
-import { AuthContext } from "../../contexts/AuthContext";
 
 import { getOne } from "../../services/movieService";
 import { edit } from "../../services/movieService";
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 
 import "./Edit.css";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
 
 
 const Edit = () => {
-
-  const {user, setUser} = useContext(AuthContext)
   const navigate = useNavigate();
   const { movieId } = useParams()
   const [cookies, setCookie, removeCookie] = useCookies(["jwtToken"]);
   const [bgImage, setBgImage] = useState()
   const [movie, setMovie] = useState([]);
+  const [categories, setCategories] = useState();
+  const [selectedValue, setSelectedValue] = useState([]);
+
+    const options = [
+        { value: 'Action', label: 'Action' },
+        { value: 'Adventure', label: 'Adventure' },
+        { value: 'Animation', label: 'Animation' },
+        { value: 'Comedy', label: 'Comedy' },
+        { value: 'Crime', label: 'Crime' },
+        { value: 'Drama', label: 'Drama' },
+        { value: 'Fantasy', label: 'Fantasy' },
+        { value: 'Historical', label: 'Historical' },
+        { value: 'Horror', label: 'Horror' },
+        { value: 'Romance', label: 'Romance' },
+        { value: 'Science-fiction', label: 'Science-fiction' },
+        { value: 'Thriller', label: 'Thriller' },
+        { value: 'Western', label: 'Western' },
+        { value: 'Thriller', label: 'Thriller' },
+        { value: 'Other', label: 'Other' },
+    ];
 
   useEffect(() => {
     getOne(movieId)
       .then(result =>{
-        if(result.owner === user._id){
-          setMovie(result)
-          setBgImage(result.imageUrl)
-        } else{
-          navigate(`/details/${movieId}`)
-        }
-
-
+        setMovie(result)
+        setBgImage(result.imageUrl)
+          const genres = result.genre.map(genre => ({ value: genre, label: genre }))
+          setCategories(genres)
       })
       .catch(err=> {
           console.log(err.error);
@@ -38,6 +52,13 @@ const Edit = () => {
 
       
     }, []);
+
+  const valueSelectHandler = val => {
+      setCategories(val)
+      setSelectedValue(val.map(x=> x.value));
+  };
+
+  const animatedComponents = makeAnimated();
 
   const onImageChangeHandler = (e) => {
     setBgImage(e.currentTarget.value)
@@ -53,12 +74,12 @@ const Edit = () => {
       duration,
       director,
       country,
-      genre,
       trailerUrl,
       imageUrl,
     } = Object.fromEntries(new FormData(e.target));
 
-      edit(
+    let genre = selectedValue;
+    edit(
         movieId,
       {
         title,
@@ -71,8 +92,11 @@ const Edit = () => {
         trailerUrl,
         imageUrl,
       },
-    ).then(navigate("/"));
+    ).then(result => {
+      navigate(`/details/${movie._id}`)
+    });
   };
+  console.log(selectedValue);
 
   return (
     <>
@@ -93,7 +117,8 @@ const Edit = () => {
                 <div className="col-12 col-md-5 form__cover">
                   <div className="row row--form">
                     <div className="col-12 col-sm-6 col-md-12">
-                      <div className="form__img" style={{"backgroundImage" : `url("${bgImage}")`, "backgroundSize": "cover", "backgroundRepeat": "noRepeat"}}>
+                      <div className="form__img" style={{"backgroundImage" : `url("${bgImage}")`, "backgroundSize": "cover",
+    "backgroundRepeat": "noRepeat"}}>
                         <label for="form__img-upload">
                           {bgImage
                             ? <p></p>
@@ -160,7 +185,16 @@ const Edit = () => {
                     </div>
 
                     <div className="col-sm-6">
-                      <SelectOption name="genre"/>
+                        <Select
+                            isMulti
+                            onChange={valueSelectHandler}
+                            components={animatedComponents}
+                            value={categories}
+                            options={options}
+                            // defaultValue={options.filter(option => categories.map(categorie => option.value === categorie))}
+                            className="basic-multi-select"
+                            classNamePrefix="Select genre"
+                        />
 
                     </div>
                 
