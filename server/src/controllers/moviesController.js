@@ -88,8 +88,8 @@ router.get('/:movieId/delete', async (req, res) => {
 router.post('/:movieId/edit', async (req, res) => {
 
     try {
-        await moviesService.updateOne(req.params.movieId, req.body);
-        res.sendStatus(200);
+       let movie = await moviesService.updateOne(req.params.movieId, req.body);
+        res.send(movie);
     } catch (error) {
         res.send(error);
     }
