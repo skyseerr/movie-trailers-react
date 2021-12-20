@@ -13,7 +13,6 @@ const MyMoviesAll = () => {
 	const { userId } = useParams()
 	const [movies, setMovies] = useState([]);
 
-    console.log(userId);
 
 	useEffect(() => {
 		getAllMine(userId)
@@ -26,7 +25,6 @@ const MyMoviesAll = () => {
 
 		}, [userId]);
 
-        console.log(movies);
     return(
       <>
     	<div>
