@@ -66,7 +66,7 @@ const Details = () => {
                   <div className="col-12 col-sm-5 col-md-4 col-lg-3 col-xl-5">
                     <div className="card__cover">
                       <img src={movie.imageUrl} alt="" />
-                      <span className="card__rate card__rate--green">0</span>
+                      {/* <span className="card__rate card__rate--green">0</span> */}
                     </div>
 
                   </div>
