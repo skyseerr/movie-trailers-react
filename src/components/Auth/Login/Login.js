@@ -57,10 +57,10 @@ const Login = () => {
 								<input type="password" name="password" className="sign__input" placeholder="Password" />
 							</div>
 
-							<div className="sign__group sign__group--checkbox">
+							{/* <div className="sign__group sign__group--checkbox">
 								<input id="remember" name="remember" type="checkbox" checked="checked" />
 								<label for="remember">Remember Me</label>
-							</div>
+							</div> */}
 							
 							<button className="sign__btn" type="submit">Sign in</button>
 

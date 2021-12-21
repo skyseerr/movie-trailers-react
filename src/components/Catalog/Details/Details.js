@@ -21,6 +21,11 @@ const Details = () => {
 	const [trailerUrl, setTrailerUrl] = useState();
   const [genre, setGenre] = useState([]);
 
+  window.scrollTo({
+    top: 0, 
+    behavior: 'auto'
+  });
+
 	useEffect(() => {
 		getOne(movieId)
 		  .then(result =>{
@@ -103,7 +108,7 @@ const Details = () => {
                             <button className="form__btn " onClick={onDeleteHendler}>Delete</button>
                          </>
                         :
-                        <div class="comments__rate">
+                        <div className="comments__rate">
                           <p></p>
                         </div>  
                         )

@@ -34,7 +34,7 @@ const Profile = () => {
 <>
 
 <BreadCrumbs props={{"name" :"My Profile"}} />
-<section class="section">
+<section className="section">
 	<div className="content content--profile">
 		<div className="profile">
 			<div className="container">
@@ -81,7 +81,7 @@ const Profile = () => {
 											</tr>
 										</thead>
 										<tbody>
-										{movies.map(x => <MyMovies movie={x} />)}
+										{movies.map(x => <MyMovies key={x._id} movie={x} />)}
 										</tbody>
 									</table>
 								</div>
@@ -141,28 +141,28 @@ const Profile = () => {
 
 									<div className="col-12 col-md-6 col-lg-12 col-xl-6">
 										<div className="form__group">
-											<label className="form__label" for="username">Username</label>
+											<label className="form__label" htmlFor="username">Username</label>
 											<input id="username" type="text" name="username" className="form__input" placeholder="User 123" />
 										</div>
 									</div>
 
 									<div className="col-12 col-md-6 col-lg-12 col-xl-6">
 										<div className="form__group">
-											<label className="form__label" for="email">Email</label>
+											<label className="form__label" htmlFor="email">Email</label>
 											<input id="email" type="text" name="email" className="form__input" placeholder="email@email.com" />
 										</div>
 									</div>
 
 									<div className="col-12 col-md-6 col-lg-12 col-xl-6">
 										<div className="form__group">
-											<label className="form__label" for="firstname">First Name</label>
+											<label className="form__label" htmlFor="firstname">First Name</label>
 											<input id="firstname" type="text" name="firstname" className="form__input" placeholder="John" />
 										</div>
 									</div>
 
 									<div className="col-12 col-md-6 col-lg-12 col-xl-6">
 										<div className="form__group">
-											<label className="form__label" for="lastname">Last Name</label>
+											<label className="form__label" htmlFor="lastname">Last Name</label>
 											<input id="lastname" type="text" name="lastname" className="form__input" placeholder="Doe" />
 										</div>
 									</div>
@@ -183,28 +183,28 @@ const Profile = () => {
 
 									<div className="col-12 col-md-6 col-lg-12 col-xl-6">
 										<div className="form__group">
-											<label className="form__label" for="oldpass">Old password</label>
+											<label className="form__label" htmlFor="oldpass">Old password</label>
 											<input id="oldpass" type="password" name="oldpass" className="form__input" />
 										</div>
 									</div>
 
 									<div className="col-12 col-md-6 col-lg-12 col-xl-6">
 										<div className="form__group">
-											<label className="form__label" for="newpass">New password</label>
+											<label className="form__label" htmlFor="newpass">New password</label>
 											<input id="newpass" type="password" name="newpass" className="form__input" />
 										</div>
 									</div>
 
 									<div className="col-12 col-md-6 col-lg-12 col-xl-6">
 										<div className="form__group">
-											<label className="form__label" for="confirmpass">Confirm new password</label>
+											<label className="form__label" htmlFor="confirmpass">Confirm new password</label>
 											<input id="confirmpass" type="password" name="confirmpass" className="form__input" />
 										</div>
 									</div>
 
 									<div className="col-12 col-md-6 col-lg-12 col-xl-6">
 										<div className="form__group">
-											<label className="form__label" for="select">Select</label>
+											<label className="form__label" htmlFor="select">Select</label>
 											<select name="select" id="select" className="form__select">
 												<option value="0">Option</option>
 												<option value="1">Option 2</option>

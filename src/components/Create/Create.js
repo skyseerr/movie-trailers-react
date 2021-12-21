@@ -118,7 +118,7 @@ const Create = () => {
                           className="form__img"
                           style={{ backgroundImage: `url("${bgImage}")`,"backgroundPosition": "center", "backgroundRepeat": "no-repeat", "backgroundSize": "cover", "backgroundRepeat": "noRepeat" }}
                         >
-                          <label for="form__img-upload" style={{"backgroundSize": "cover"}}>
+                          <label htmlFor="form__img-upload" style={{"backgroundSize": "cover"}}>
                             {bgImage ? (
                               <p></p>
                             ) : (

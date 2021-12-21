@@ -57,7 +57,7 @@ router.post('/register', async (req, res) => {
         });
 
     } catch (error) {
-        res.status(403).send({"error": "Username or email already exists!"})
+        res.status(403).send({"error": "Email already exists!"})
     }
 });
 

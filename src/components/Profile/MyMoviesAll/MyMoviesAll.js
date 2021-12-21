@@ -37,7 +37,7 @@ const MyMoviesAll = () => {
 			<div className="container">
 				<div className="row row--grid">
 
-				{movies.map(x => <Card movie={x} />)}
+				{movies.map(x => <Card key={x._id} movie={x} />)}
 
 				</div>
 

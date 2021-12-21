@@ -167,7 +167,7 @@ const Comments = (genre) => {
             </div>
 
             <div className="col-12 col-lg-4 col-xl-4">
-              <YouMayAlsoLike props={genre} />
+              <YouMayAlsoLike props={{"genre": genre.props, "movieId": movieId}} />
             </div>
           </div>
         </div>
