@@ -16,7 +16,6 @@ import Catalog from "./components/Catalog/Catalog";
 import Create from "./components/Create/Create";
 import Edit from "./components/Edit/Edit";
 import Contacts from "./components/Contacts/Contacts";
-import Logout from "./components/Auth/Logout/Logout";
 import Profile from "./components/Profile/Profile";
 import Details from "./components/Catalog/Details/Details";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
@@ -43,7 +42,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<ProtectedRoute user={user}><Login /></ProtectedRoute>} />
           <Route path="/register" element={<ProtectedRoute user={user}><Register /></ProtectedRoute>} />
-          <Route path="/logout" element={<Logout />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/catalog/:param" element={<Search />} />

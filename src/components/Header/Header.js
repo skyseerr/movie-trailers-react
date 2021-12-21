@@ -1,6 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ReactComponent as UserLogo } from "../../user.svg";
+import { useCookies } from 'react-cookie';
+
 
 import "../Header/Header.css";
 import { ReactComponent as Logo } from "../../logo.svg";
@@ -10,16 +12,27 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 const Header = () => {
 
+    const {user, setUser} = useContext(AuthContext);
+    const [cookies, setCookie, removeCookie] = useCookies(['name', 'jwtToken']);
 	const navigate = useNavigate()
 	const userName = localStorage.getItem('user');
 	
+	const logout = () => {
+		removeCookie('name',{path:'/'});
+		removeCookie('jwtToken',{path:'/'});
+		localStorage.removeItem('user');
+		localStorage.removeItem('_id');
+		setUser(null)
+		navigate('/')
+	}
+
 	const loggedInMenu = (
 		<>
 		<Link to="/profile"><p style={{color: "white", margin : "0", display: "flex", alignItems: "center"}}> <UserLogo /> &nbsp; {userName}</p></Link>
-		<Link to="/logout" className="header__sign-in">
+		<button type="button" onClick={logout} className="header__sign-in">
 		<i className="icon ion-ios-log-in"></i>
 		<span>Logout</span>
-		</Link>
+		</button>
 		</>
 	)
 
