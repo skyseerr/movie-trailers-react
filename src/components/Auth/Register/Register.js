@@ -4,49 +4,53 @@ import { useCookies } from "react-cookie";
 
 import "../Auth.css";
 
-// import ControlledPopup from "../../Popups/Popup";
+import ControlledPopup from "../../Popups/Popup";
 import { register } from "../../../services/authService";
 import { ReactComponent as Logo } from "../../../logo.svg";
+import { validateRegister } from "../../../utils/validate";
 
-const Register = () => { 
-
+const Register = () => {
   const navigate = useNavigate();
 
-  const [error, setError] = useState('')
+  const [error, setError] = useState("");
   const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
 
   useEffect(() => {
-    setError('')
+    if (error !== "") {
+      setError("");
+    }
+  }, [error]);
 
-  },[error])
-  
   const registerFormHandler = (e) => {
-	  e.preventDefault();
+    e.preventDefault();
 
+    let formData = new FormData(e.target);
+    let name = formData.get("name");
+    let email = formData.get("email");
+    let password = formData.get("password");
+    let repassword = formData.get("repassword");
 
-	  let formData = new FormData(e.target);
-	  let name = formData.get('name');
-	  let email = formData.get('email');
-	  let password = formData.get('password');
-	  let repassword = formData.get('repassword');
+    const errors = validateRegister(name, email, password, repassword);
+    if (errors.length > 0) {
+      setError(errors[0]);
+      console.log(errors);
+      return;
+    }
 
-	  if(password === repassword){
-
-		    register({ name, email, password })
-		    .then((result) => {
-		      setCookie("jwtToken", result.userData.token, {
-		    	path: "/",
-		    	maxAge: 3600,
-		      });
-		      setCookie("name", result.userData.name, { path: "/", maxAge: 3600 })
-		      navigate("/")
-		    })
-		    .catch((err) => {
-		      setError(err)
-		    })
-	      } else {
-           setError('Passwords dont match!')
-	      }
+    register({ name, email, password })
+      .then((result) => {
+        setCookie("jwtToken", result.userData.token, {
+          path: "/",
+          maxAge: 3600,
+        });
+        setCookie("name", result.userData.name, { path: "/", maxAge: 3600 });
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err.error);
+        setError(err.error);
+        console.log(error);
+      });
   };
 
   return (
@@ -55,21 +59,25 @@ const Register = () => {
         <div className="row">
           <div className="col-12">
             <div className="sign__content">
-              <form action="POST" onSubmit={registerFormHandler} className="sign__form">
-              <Link to="/" className="header__logo">
-							<Logo />
-					  	</Link>
+              <form
+                action="POST"
+                onSubmit={registerFormHandler}
+                className="sign__form"
+              >
+                <Link to="/" className="header__logo">
+                  <Logo />
+                </Link>
 
-              <div className="errorMsg">
-                {/* <ControlledPopup error={error} /> */}
-              </div>
+                <div className="errorMsg">
+                  <ControlledPopup error={error} />
+                </div>
 
                 <div className="sign__group">
                   <input
                     type="text"
                     className="sign__input"
                     placeholder="Name"
-					name="name"
+                    name="name"
                   />
                 </div>
 
@@ -78,7 +86,7 @@ const Register = () => {
                     type="text"
                     className="sign__input"
                     placeholder="Email"
-					name="email"
+                    name="email"
                   />
                 </div>
 
@@ -87,16 +95,16 @@ const Register = () => {
                     type="password"
                     className="sign__input"
                     placeholder="Password"
-					name="password"
+                    name="password"
                   />
                 </div>
 
-				<div className="sign__group">
+                <div className="sign__group">
                   <input
                     type="password"
                     className="sign__input"
                     placeholder="Repeat Password"
-					name="repassword"
+                    name="repassword"
                   />
                 </div>
 
