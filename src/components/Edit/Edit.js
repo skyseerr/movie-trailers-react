@@ -97,7 +97,6 @@ const Edit = () => {
       navigate(`/details/${movie._id}`)
     });
   };
-  console.log(selectedValue);
 
   return (
     <>
