@@ -22,4 +22,8 @@ exports.search = (param) => Movies.find({title: { $regex: param, $options: 'i' }
 
 exports.getByCategory = (param) => Movies.find({genre: { $regex: param, $options: 'i' } }).limit(18).lean();
 
+exports.getByCategorySix = (param, movieId) => Movies.find({ _id: {$ne: movieId}, genre: { $regex: param, $options: 'i' }}).limit(6).lean();
+
+
+
 
