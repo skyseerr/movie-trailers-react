@@ -21,7 +21,7 @@ const ControlledPopup = ({ error }) => {
   return (
     <div>
       <Popup open={open} closeOnDocumentClick onClose={closeModal}>
-        <div className="modal">
+        <div className="modal" style={{"color" : "white", "border" : "2px solid red"}}>
           {/* <a href="javascript: void(0)" className="close" onClick={closeModal}>
             &times;
           </a> */}
