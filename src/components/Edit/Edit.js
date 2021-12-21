@@ -117,8 +117,7 @@ const Edit = () => {
                 <div className="col-12 col-md-5 form__cover">
                   <div className="row row--form">
                     <div className="col-12 col-sm-6 col-md-12">
-                      <div className="form__img" style={{"backgroundImage" : `url("${bgImage}")`, "backgroundSize": "cover",
-    "backgroundRepeat": "noRepeat"}}>
+                      <div className="form__img" style={{"backgroundImage" : `url("${bgImage}")`, "backgroundSize": "cover","backgroundPosition": "center", "backgroundRepeat": "no-repeat", "backgroundSize": "cover","backgroundRepeat": "noRepeat"}}>
                         <label for="form__img-upload">
                           {bgImage
                             ? <p></p>
