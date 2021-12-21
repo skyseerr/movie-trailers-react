@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 
-import { getMoviesByCatery } from "../../../../services/movieService";
+import { getLastSixByCategory } from "../../../../services/movieService";
 import CardTwoInRow from "../YouMayAlsoLike/CardTwoInRow/CardTwoInRow";
 import "../YouMayAlsoLike/YouMayAlsoLike.css";
 
@@ -8,10 +8,10 @@ import "../YouMayAlsoLike/YouMayAlsoLike.css";
 const YouMayAlsoLike = ({props}) => {
     
     const [movies, setMovies] = useState([]);
-    
     useEffect(() => {
+        console.log(props);
         
-        getMoviesByCatery(props.props[0])
+        getLastSixByCategory(props.genre[0], props.movieId)
         .then(result => {
             setMovies(result)
         })
@@ -19,7 +19,7 @@ const YouMayAlsoLike = ({props}) => {
             console.log(err.error);
         })
 
-    },[props.props])
+    },[props.genre[0]])
 
  
     
@@ -29,7 +29,7 @@ const YouMayAlsoLike = ({props}) => {
                 <h2 className="section__title section__title--sidebar">You may also like...</h2>
             </div>
 
-            {movies.map((x) => (<CardTwoInRow movie={x} />))}
+            {movies.map((x) => (<CardTwoInRow key={x._id} movie={x} />))}
 
          </div>
     )

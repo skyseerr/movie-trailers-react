@@ -242,3 +242,20 @@ export const getMoviesByCatery = async (categoryName) => {
     }
 }
 
+export const getLastSixByCategory = async (categoryName, movieId) => {    
+
+    let res = await fetch((`${url}/catalog/category/${categoryName}/${movieId}`), {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    let jsonResult = await res.json();
+
+    if(res.ok) {
+        return jsonResult;
+    } else {
+        throw jsonResult;
+    }
+}
