@@ -5,14 +5,17 @@ import { useCookies } from "react-cookie";
 import { getOne } from "../../services/movieService";
 import { edit } from "../../services/movieService";
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
+import makeAnimated from "react-select/animated";
+import Select from "react-select";
+import { validateForm } from "../../utils/validate";
+import ControlledPopup from "../Popups/Popup";
 
 import "./Edit.css";
 import "../Create/SelectOption/SelectOption.css";
-import Select from "react-select";
-import makeAnimated from "react-select/animated";
 
 
 const Edit = () => {
+  const animatedComponents = makeAnimated();
   const navigate = useNavigate();
   const { movieId } = useParams()
   const [cookies, setCookie, removeCookie] = useCookies(["jwtToken"]);
@@ -20,6 +23,7 @@ const Edit = () => {
   const [movie, setMovie] = useState([]);
   const [categories, setCategories] = useState();
   const [selectedValue, setSelectedValue] = useState([]);
+  const [error, setError] = useState("");
 
     const options = [
         { value: 'Action', label: 'Action' },
@@ -44,14 +48,12 @@ const Edit = () => {
       .then(result =>{
         setMovie(result)
         setBgImage(result.imageUrl)
-          const genres = result.genre.map(genre => ({ value: genre, label: genre }))
-          setCategories(genres)
+        const genres = result.genre.map(genre => ({ value: genre, label: genre }))
+        setCategories(genres)
       })
       .catch(err=> {
           console.log(err.error);
       })
-
-      
     }, []);
 
   const valueSelectHandler = val => {
@@ -59,10 +61,9 @@ const Edit = () => {
       setSelectedValue(val.map(x=> x.value));
   };
 
-  const animatedComponents = makeAnimated();
 
   const onImageChangeHandler = (e) => {
-    setBgImage(e.currentTarget.value)
+    setBgImage(e.currentTarget.value);
   }
 
   const submitHandler = (e) => {

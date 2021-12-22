@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { AuthContext } from "./contexts/AuthContext";
@@ -26,7 +26,7 @@ import MyMoviesAll from "./components/Profile/MyMoviesAll/MyMoviesAll";
 
 function App() {
   
-  const [cookies, setCookie] = useCookies(["name"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["name"]);
   const [user, setUser] = useState('');
   
   useEffect(() => {

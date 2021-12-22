@@ -22,8 +22,8 @@ const Header = () => {
 		removeCookie('jwtToken',{path:'/'});
 		localStorage.removeItem('user');
 		localStorage.removeItem('_id');
-		setUser(null)
-		navigate('/')
+		setUser(null);
+		navigate('/');
 	}
 
 	const loggedInMenu = (

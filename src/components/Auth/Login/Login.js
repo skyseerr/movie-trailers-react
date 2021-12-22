@@ -1,16 +1,16 @@
-import { useState, useContext, createContext } from "react";
+// import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from 'react-cookie';
 
 import { login } from "../../../services/authService";
 import { ReactComponent as Logo } from "../../../logo.svg";
-import { AuthContext } from "../../../contexts/AuthContext";
+// import { AuthContext } from "../../../contexts/AuthContext";
 
 import "../Auth.css";
 
 const Login = () => {
 
-	const {user, setUser} = useContext(AuthContext);
+	// const {user, setUser} = useContext(AuthContext);
 	const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
 
 	const navigate = useNavigate();
