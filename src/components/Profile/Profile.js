@@ -47,7 +47,7 @@ const Profile = () => {
 								</div>
 								<div className="profile__meta">
 									<h3>{userName}</h3>
-									<span>HOTFLIX ID: {userId}</span>
+									<span>MOVIETUBE ID: {userId}</span>
 								</div>
 							</div>
 						</div>
