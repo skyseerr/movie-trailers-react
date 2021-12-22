@@ -16,7 +16,9 @@ const Youtube = ({param}) => {
     useEffect(()=> {
         if(param){
             let match = /v=(-?_?\w+-?_?\w+)&/ig.exec(param);
-            setStrippedUrl(match[1]);
+            if (match) {
+              setStrippedUrl(match[1]);
+            }
         }
     },[param])
 

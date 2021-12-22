@@ -73,7 +73,6 @@ const Create = () => {
     const errors = validateForm(title, description, year, duration, director, genre, trailerUrl, imageUrl);
     if (errors.length > 0) {
       setError(errors[0]);
-      console.log(errors);
       return;
     }
 
@@ -172,7 +171,7 @@ const Create = () => {
                         <input
                           type="text"
                           className="form__input"
-                          placeholder="Running timed in minutes"
+                          placeholder="Duration in minutes"
                           name="duration"
                         />
                       </div>

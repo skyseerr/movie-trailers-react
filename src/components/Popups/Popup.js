@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import Warper from './Warper';
 import Popup from "reactjs-popup";
+
+import "./Popup.css";
 
 const ControlledPopup = ({ error }) => {
     const [errorMessage, setErrorMessage] = useState();

@@ -10,6 +10,9 @@ let commentsSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    name: {
+        type: String,
+    },
     owner: {
         type: mongoose.Types.ObjectId,
         ref: 'User',
@@ -18,9 +21,7 @@ let commentsSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'Movie',
     },
-    userName: {
-        type: String,
-    },
+
 
 }, {
     timestamps: true

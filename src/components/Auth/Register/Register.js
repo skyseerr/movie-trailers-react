@@ -33,7 +33,6 @@ const Register = () => {
     const errors = validateRegister(name, email, password, repassword);
     if (errors.length > 0) {
       setError(errors[0]);
-      console.log(errors);
       return;
     }
 
@@ -44,6 +43,8 @@ const Register = () => {
           maxAge: 3600,
         });
         setCookie("name", result.userData.name, { path: "/", maxAge: 3600 });
+        localStorage.setItem('user', result.userData.name)
+        localStorage.setItem('_id', result.userData._id)
         navigate("/");
       })
       .catch((err) => {
