@@ -9,13 +9,11 @@ const ProtectedRoute = ({user, children}) => {
             return user?.name !== null 
                 ? <Navigate to="/" state={{ from: location }} />
                 : (children) 
-            break;
 
         default:
             return user?.name !== null 
                 ? (children) 
                 : <Navigate to="/" state={{ from: location }} />
-            break;
     }
     
 };

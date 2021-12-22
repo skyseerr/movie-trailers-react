@@ -15,9 +15,6 @@ const YouMayAlsoLike = ({props}) => {
         .then(result => {
             setMovies(result)
         })
-        .catch(err=> {
-            console.log(err.error);
-        })
 
     },[props.genre[0]])
 

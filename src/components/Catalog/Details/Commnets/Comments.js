@@ -23,9 +23,8 @@ const Comments = (genre) => {
     let title = formData.get("title");
     let review = formData.get("review");
 
-    create({ title, review, user }, cookies["jwtToken"], movieId)
+    create({ title, review, user }, movieId, cookies["jwtToken"])
     .then(result => {
-      console.log(result);
       setIsCommentCreated(true);
     })
     e.currentTarget.title.value = "";
@@ -39,9 +38,6 @@ const Comments = (genre) => {
           setComments(result);
           setIsCommentCreated(false);
         })
-        .catch((err) => {
-          console.log(err.error);
-        });
     }
   }, [isCommentCreated]);
 

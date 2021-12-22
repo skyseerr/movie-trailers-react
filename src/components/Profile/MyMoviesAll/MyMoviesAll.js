@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
 import { getAllMine } from "../../../services/movieService";
 
@@ -12,15 +13,13 @@ const MyMoviesAll = () => {
 
 	const { userId } = useParams()
 	const [movies, setMovies] = useState([]);
+    const [cookies, setCookie, removeCookie] = useCookies(['jwtToken']);
 
 
 	useEffect(() => {
-		getAllMine(userId)
+		getAllMine(userId, cookies['jwtToken'])
 		  .then(result =>{
 			setMovies(result);
-		  })
-		  .catch(err=> {
-			  console.log(err.error);
 		  })
 
 		}, [userId]);

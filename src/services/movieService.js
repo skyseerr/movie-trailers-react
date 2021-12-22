@@ -55,7 +55,7 @@ export const edit = async (
     genre,
     trailerUrl,
     imageUrl
-}) => {
+}, token) => {
 
     let movie = {
         title,
@@ -72,7 +72,7 @@ export const edit = async (
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            // 'Authorization': constructAuthHeader(token)
+            'Authorization': constructAuthHeader(token)
 
         },
         body: JSON.stringify(movie)
@@ -146,12 +146,13 @@ export const getOne = async (id) => {
     }
 }
 
-export const getLastFiveMine = async (id) => {    
+export const getLastFiveMine = async (id, token) => {    
 
     let res = await fetch((`${url}/my-movies/${id}`), {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': constructAuthHeader(token)
         }
     });
 
@@ -165,12 +166,13 @@ export const getLastFiveMine = async (id) => {
     }
 }
 
-export const getAllMine = async (id) => {    
+export const getAllMine = async (id, token) => {    
 
     let res = await fetch((`${url}/my-movies-all/${id}`), {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': constructAuthHeader(token)
         }
     });
 
@@ -188,10 +190,10 @@ export const deleteOne = async (id, token) => {
     
     let res = await fetch((`${url}/${id}/delete`), {
         method: 'GET',
-        // headers: {
-        //     'Content-Type': 'application/json',
-        //     'Authorization': constructAuthHeader(token)
-        // },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': constructAuthHeader(token)
+        },
     });
 
     let jsonResult = await res.json();

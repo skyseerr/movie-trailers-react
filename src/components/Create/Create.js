@@ -119,7 +119,7 @@ const Create = () => {
                       <div className="col-12 col-sm-6 col-md-12">
                         <div
                           className="form__img"
-                          style={{ backgroundImage: `url("${bgImage}")`,"backgroundPosition": "center", "backgroundRepeat": "no-repeat", "backgroundSize": "cover", "backgroundRepeat": "noRepeat" }}
+                          style={{ backgroundImage: `url("${bgImage}")`,"backgroundPosition": "center", "backgroundRepeat": "no-repeat", "backgroundSize": "cover"}}
                         >
                           <label htmlFor="form__img-upload" style={{"backgroundSize": "cover"}}>
                             {bgImage ? (

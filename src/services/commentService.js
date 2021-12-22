@@ -1,9 +1,9 @@
 import { url } from "../constants/urlConstant";
 import constructAuthHeader from "../utils/tokenUtil";
 
-export const create = async ({ title, review }, token, movieId, userName) => {
+export const create = async ({ title, review, user }, movieId,token) => {
 
-    let comment = { title, review };
+    let comment = { title, review, user };
 
     let res = await fetch((`${url}/comment/${movieId}`), {
         method: 'POST',

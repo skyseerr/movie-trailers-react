@@ -33,29 +33,21 @@ const Details = () => {
 			setMovie(result);
 			setGenre(result.genre);
 		  })
-		  .catch(err=> {
-			  console.log(err.error);
-		  })
 		}, [movieId]);
 
 
   const onDeleteHendler = () => {
 
     const movieId = movie._id;
-    const token = cookies['jwtToken'];
 
-    try {
-      if(movie.owner === user._id){
-        deleteOne(movieId)
-        navigate('/')
-      }else{
+    if(movie.owner === user._id){
+        deleteOne(movieId, cookies['jwtToken'])
+        .then(result=>{
+          navigate('/')
+        });
+    }else{
         navigate(`/details/${movieId}`)
-      }
-    } catch (error) {
-      console.log(error);
-    }
-
-    
+    }    
   }
 
   return (

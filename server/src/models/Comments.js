@@ -10,7 +10,7 @@ let commentsSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    name: {
+    user: {
         type: String,
     },
     owner: {

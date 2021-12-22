@@ -4,7 +4,7 @@ const router = require('express').Router();
 const moviesService = require('../services/moviesService');
 const commentsService = require('../services/commentsService');
 
-router.post('/create', async (req, res) => {
+router.post('/create',isAuth, async (req, res) => {
     try {
 
         await moviesService.create({...req.body, owner: req.user._id});
@@ -50,7 +50,7 @@ router.get('/lastsix', async (req,res) => {
 
 });
 
-router.get('/my-movies/:userId', async (req, res) => {
+router.get('/my-movies/:userId',isAuth, async (req, res) => {
 
     try {
         let lastFiveMovies = await moviesService.getLastFiveMine((req.params.userId));
@@ -61,7 +61,7 @@ router.get('/my-movies/:userId', async (req, res) => {
 
 });
 
-router.get('/my-movies-all/:userId', async (req, res) => {
+router.get('/my-movies-all/:userId',isAuth, async (req, res) => {
 
     try {
         let allMyMovies = await moviesService.getAllMine((req.params.userId));
@@ -73,18 +73,18 @@ router.get('/my-movies-all/:userId', async (req, res) => {
 
 });
 
-router.get('/:movieId/delete', async (req, res) => {
+router.get('/:movieId/delete',isAuth, async (req, res) => {
 
     try {
-        await moviesService.delete(req.params.movieId)
-        res.sendStatus(200);
+       let deleted = await moviesService.delete(req.params.movieId)
+        res.send(deleted);
     } catch (error) {
         res.send(error);
     }
 
 });
 
-router.post('/:movieId/edit', async (req, res) => {
+router.post('/:movieId/edit',isAuth, async (req, res) => {
 
     try {
        let movie = await moviesService.updateOne(req.params.movieId, req.body);
@@ -106,8 +106,9 @@ router.get('/:movieId/comments', async (req, res) => {
 
 });
 
-router.post('/comment/:movieId', async (req, res) => {
+router.post('/comment/:movieId',isAuth, async (req, res) => {
 
+    console.log(req.body);
     try {
         await commentsService.create({...req.body, owner: req.user._id, movie: req.params.movieId});
         res.send(req.body);

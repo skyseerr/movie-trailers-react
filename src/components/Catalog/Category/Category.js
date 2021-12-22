@@ -17,10 +17,6 @@ const Category = () => {
 		  .then(result =>{
 			setMovies(result)
 		  })
-		  .catch(err=> {
-			  console.log(err.error);
-		  })
-
 		}, [params]);
 
     return(

@@ -52,10 +52,8 @@ const Edit = () => {
           label: genre,
         }));
         setCategories(genres);
+        setSelectedValue(result.genre);
       })
-      .catch((err) => {
-        console.log(err.error);
-      });
   }, []);
 
   useEffect(() => {
@@ -112,7 +110,7 @@ const Edit = () => {
       genre,
       trailerUrl,
       imageUrl,
-    }).then((result) => {
+    }, cookies["jwtToken"]).then((result) => {
       navigate(`/details/${movie._id}`);
     });
   };
@@ -145,8 +143,6 @@ const Edit = () => {
                             backgroundSize: "cover",
                             backgroundPosition: "center",
                             backgroundRepeat: "no-repeat",
-                            backgroundSize: "cover",
-                            backgroundRepeat: "noRepeat",
                           }}
                         >
                           <label for="form__img-upload">

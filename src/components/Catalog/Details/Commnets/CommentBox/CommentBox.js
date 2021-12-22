@@ -9,8 +9,8 @@ const CommentBox = ({ props }) => {
         <div className="flex-title">
           <UserIcon />
           <div className="user-info">
-            <span className="comments__name">{props.owner}</span>
-            <span className="comments__time">{props.createdAt}</span>
+            <span className="comments__name">{props.user}</span>
+            <span className="comments__time">{props.createdAt.replace('T', ' / ').slice(0, 21)}</span>
           </div>
         </div>
       </div>

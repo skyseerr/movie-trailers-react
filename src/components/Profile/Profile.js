@@ -16,16 +16,11 @@ const Profile = () => {
     // const [profile, setProfile] = useState({})
     const [movies, setMovies] = useState([])
 
-
-
 	useEffect(() => {
 
-		getLastFiveMine(userId)
+		getLastFiveMine(userId, cookies['jwtToken'])
 		.then(result =>{
 			setMovies(result);
-		})
-		.catch(err=> {
-			console.log(err.error);
 		})
 
 	}, [userId]);
@@ -63,7 +58,7 @@ const Profile = () => {
 						<div className="col-12">
 							<div className="dashbox">
 								<div className="dashbox__title">
-									<h3><i className="icon ion-ios-film"></i> Your Movies:</h3>
+									<h3><i className="icon ion-ios-film"></i> Your last five movies:</h3>
 
 									<div className="dashbox__wrap">
 										<Link className="dashbox__more" to={`/catalog/my-movies-all/${userId}`}>View All</Link>

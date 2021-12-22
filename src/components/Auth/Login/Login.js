@@ -29,7 +29,6 @@ const Login = () => {
     let email = formData.get("email");
     let password = formData.get("password");
 
-	console.log(email, password);
 
     const errors = validateLogin(email, password);
     if (errors.length > 0) {
@@ -50,7 +49,7 @@ const Login = () => {
         navigate("/");
       })
       .catch((err) => {
-        console.log(err.error);
+        setError(err.error);
       });
   };
 
