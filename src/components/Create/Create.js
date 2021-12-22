@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import Select from 'react-select'
@@ -7,48 +7,43 @@ import { useCookies } from "react-cookie";
 
 import { create } from "../../services/movieService";
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
-// import SelectOption from "../Create/SelectOption/SelectOption";
+import { validateForm } from "../../utils/validate";
+import ControlledPopup from "../Popups/Popup";
 
 import "../Filter/Filter.css";
 import "./Create.css";
 
 const Create = () => {
-  const navigate = useNavigate();
-
-  const [cookies, setCookie, removeCookie] = useCookies(["jwtToken"]);
-
   const animatedComponents = makeAnimated();
-  
-    const options = [
-        { value: 'Action', label: 'Action' },
-        { value: 'Adventure', label: 'Adventure' },
-        { value: 'Animation', label: 'Animation' },
-        { value: 'Comedy', label: 'Comedy' },
-        { value: 'Crime', label: 'Crime' },
-        { value: 'Drama', label: 'Drama' },
-        { value: 'Fantasy', label: 'Fantasy' },
-        { value: 'Historical', label: 'Historical' },
-        { value: 'Horror', label: 'Horror' },
-        { value: 'Romance', label: 'Romance' },
-        { value: 'Science-fiction', label: 'Science-fiction' },
-        { value: 'Thriller', label: 'Thriller' },
-        { value: 'Western', label: 'Western' },
-        { value: 'Thriller', label: 'Thriller' },
-        { value: 'Other', label: 'Other' },
-      ];
-
-  // const [genreValue, setGenreValue] = useState([]);
-
-  // const onClickHendler = (e) => {
-  //     setGenreValue( arr => [...arr, e.target.textContent]);
-  // };
-
-  // const delteGenreValur = () => {
-  //   setGenreValue([]);
-  // };
-
+  const [cookies, setCookie, removeCookie] = useCookies(["jwtToken"]);
   const [bgImage, setBgImage] = useState();
+  const navigate = useNavigate();
   const [selectedValue, setSelectedValue] = useState([]);
+  const [error, setError] = useState("");
+
+  const options = [
+      { value: 'Action', label: 'Action' },
+      { value: 'Adventure', label: 'Adventure' },
+      { value: 'Animation', label: 'Animation' },
+      { value: 'Comedy', label: 'Comedy' },
+      { value: 'Crime', label: 'Crime' },
+      { value: 'Drama', label: 'Drama' },
+      { value: 'Fantasy', label: 'Fantasy' },
+      { value: 'Historical', label: 'Historical' },
+      { value: 'Horror', label: 'Horror' },
+      { value: 'Romance', label: 'Romance' },
+      { value: 'Science-fiction', label: 'Science-fiction' },
+      { value: 'Thriller', label: 'Thriller' },
+      { value: 'Western', label: 'Western' },
+      { value: 'Thriller', label: 'Thriller' },
+      { value: 'Other', label: 'Other' },
+    ];
+
+  useEffect(() => {
+    if (error !== "") {
+      setError("");
+    }
+  }, [error]);
 
 
 
@@ -71,10 +66,16 @@ const Create = () => {
       year,
       duration,
       director,
-      country,
       trailerUrl,
       imageUrl,
     } = Object.fromEntries(new FormData(e.target));
+
+    const errors = validateForm(title, description, year, duration, director, genre, trailerUrl, imageUrl);
+    if (errors.length > 0) {
+      setError(errors[0]);
+      console.log(errors);
+      return;
+    }
 
     create(
       {
@@ -83,7 +84,6 @@ const Create = () => {
         year,
         duration,
         director,
-        country,
         genre,
         trailerUrl,
         imageUrl,
@@ -106,6 +106,10 @@ const Create = () => {
               <div className="main__title">
                 <h2>Add Movie</h2>
               </div>
+            </div>
+
+            <div className="errorMsg">
+                  <ControlledPopup error={error} />
             </div>
 
             <div className="col-12">
