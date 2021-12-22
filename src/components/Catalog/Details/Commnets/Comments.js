@@ -14,6 +14,7 @@ const Comments = (genre) => {
   const [cookies, setCookie, removeCookie] = useCookies(["jwtToken"]);
   const { movieId } = useParams();
   const [isCommentCreated, setIsCommentCreated] = useState(true);
+  let user = localStorage.getItem("user");
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -21,10 +22,12 @@ const Comments = (genre) => {
 
     let title = formData.get("title");
     let review = formData.get("review");
-    let userName = localStorage.getItem("user");
 
-    create({ title, review, userName }, cookies["jwtToken"], movieId, userName);
-    setIsCommentCreated(true);
+    create({ title, review, user }, cookies["jwtToken"], movieId)
+    .then(result => {
+      console.log(result);
+      setIsCommentCreated(true);
+    })
     e.currentTarget.title.value = "";
     e.currentTarget.review.value = "";
   };
@@ -132,33 +135,33 @@ const Comments = (genre) => {
                     <div className="col-12">
                       <div className="comments">
                         <ul className="comments__list">
-                          {comments.map((x) => (
-                            <li key={x._id} className="comments__item">
-                              <CommentBox props={x} />{" "}
-                            </li>
-                          ))}
+                          {comments.map(x => 
+                            <li key={x._id} className="comments__item"><CommentBox key={x._id} props={x} /></li>)}
                         </ul>
 
-                        <form
-                          action="POST"
-                          className="form"
-                          onSubmit={onSubmit}
-                        >
-                          <input
-                            type="text"
-                            className="form__input"
-                            placeholder="Title"
-                            name="title"
-                          />
-                          <textarea
-                            className="form__textarea"
-                            placeholder="Review"
-                            name="review"
-                          />
-                          <button type="submit" className="form__btn">
-                            Send
-                          </button>
-                        </form>
+                        {user
+                        ? <form
+                        action="POST"
+                        className="form"
+                        onSubmit={onSubmit}
+                      >
+                        <input
+                          type="text"
+                          className="form__input"
+                          placeholder="Title"
+                          name="title"
+                        />
+                        <textarea
+                          className="form__textarea"
+                          placeholder="Review"
+                          name="review"
+                        />
+                        <button type="submit" className="form__btn">
+                          Send
+                        </button>
+                      </form>
+                      
+                    : <p>''</p>}
                       </div>
                     </div>
                   </div>

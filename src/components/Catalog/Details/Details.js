@@ -75,7 +75,6 @@ const Details = () => {
                   <div className="col-12 col-sm-5 col-md-4 col-lg-3 col-xl-5">
                     <div className="card__cover">
                       <img src={movie.imageUrl} alt="" />
-                      {/* <span className="card__rate card__rate--green">0</span> */}
                     </div>
 
                   </div>
@@ -88,7 +87,7 @@ const Details = () => {
                         </li>
                         <li>
                           <span>Genre:</span>
-                            {genre.map(x => <Link to={`/catalog/category/${x.toLowerCase()}`}>{x}</Link>)}
+                            {genre.map(x => <Link key={x._id} to={`/catalog/category/${x.toLowerCase()}`}>{x}</Link>)}
 
                         </li>
                         <li>

@@ -20,7 +20,7 @@ const Card = ({
             <div className="card__content">
                 <h3 className="card__title"><Link to={`/details/${movie._id}`}>{movie.title}</Link></h3>
                 <span className="card__category">
-                    {movieGenre.map(x => <Link to={`/catalog/category/${x.toLowerCase()}`}>{x}</Link>)}
+                    {movieGenre.map(x => <Link key={x._id} to={`/catalog/category/${x.toLowerCase()}`}>{x}</Link>)}
                 </span>
             </div>
         </div>

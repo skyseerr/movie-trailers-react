@@ -225,7 +225,6 @@ const Edit = () => {
                           components={animatedComponents}
                           value={categories}
                           options={options}
-                          // defaultValue={options.filter(option => categories.map(categorie => option.value === categorie))}
                           className="basic-multi-select"
                           classNamePrefix="Select genre"
                         />
