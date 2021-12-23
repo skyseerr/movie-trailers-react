@@ -38,7 +38,6 @@ const Edit = () => {
     { value: "Science-fiction", label: "Science-fiction" },
     { value: "Thriller", label: "Thriller" },
     { value: "Western", label: "Western" },
-    { value: "Thriller", label: "Thriller" },
     { value: "Other", label: "Other" },
   ];
 
