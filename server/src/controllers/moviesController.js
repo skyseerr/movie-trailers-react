@@ -108,7 +108,6 @@ router.get('/:movieId/comments', async (req, res) => {
 
 router.post('/comment/:movieId',isAuth, async (req, res) => {
 
-    console.log(req.body);
     try {
         await commentsService.create({...req.body, owner: req.user._id, movie: req.params.movieId});
         res.send(req.body);

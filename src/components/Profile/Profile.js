@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useCookies } from 'react-cookie';
 
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
-// import {getProfile} from "../../services/profileService";
 import { getLastFiveMine } from "../../services/movieService";
 import MyMovies from "./MyMovies/MyMovies";
 import { Link } from "react-router-dom";
@@ -13,7 +12,6 @@ const Profile = () => {
 	const userId = localStorage.getItem('_id');
 	const userName = localStorage.getItem('user');
     const [cookies, setCookie, removeCookie] = useCookies(['jwtToken']);
-    // const [profile, setProfile] = useState({})
     const [movies, setMovies] = useState([])
 
 	useEffect(() => {

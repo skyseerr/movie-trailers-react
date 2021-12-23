@@ -1,15 +1,6 @@
-// import bcrypt from "bcryptjs";
 import { url } from "../constants/urlConstant";
 
-// const salt = bcrypt.genSaltSync(10)
-
-// function cryptPassword(password) {
-//     return bcrypt.hashSync(password, salt)
-// };
-
 export const login = async ({email, password}) => {
-
-    // let hashedPass = cryptPassword(password);
 
         let user = {
             email,
@@ -36,7 +27,6 @@ export const login = async ({email, password}) => {
 }
 export const register = async ({name, email, password}) => {
 
-    // let hashedPass = cryptPassword(password);
     let user = {
         name,
         email,

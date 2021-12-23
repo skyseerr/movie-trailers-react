@@ -9,7 +9,6 @@ const YouMayAlsoLike = ({props}) => {
     
     const [movies, setMovies] = useState([]);
     useEffect(() => {
-        console.log(props);
         
         getLastSixByCategory(props.genre[0], props.movieId)
         .then(result => {
