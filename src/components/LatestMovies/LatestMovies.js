@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
 
 import Card from "../Catalog/Card/Card";
+import Loader from "../Loader/Loader";
 
 import { getLastSix } from "../../services/movieService";
 
 const LastSix = () => {
 
 	const [movies, setMovies] = useState([]);
+	const [loader, setLoader] = useState(true);
 
 	useEffect(() => {
 		getLastSix()
 		.then((result) => {
 			setMovies(result);
-		})
+			setLoader(false);
+		});
 	}, []);
 	
   return (
@@ -21,9 +24,13 @@ const LastSix = () => {
       <div className="catalog">
         <div className="container">
 			<h2 className="underline">Latest Movies</h2>
-        	<div className="row row--grid">
+        	{
+			loader
+			? <Loader /> 
+			: <div className="row row--grid">
             {movies.map((x) => (<Card key={x._id} movie={x} />))}
-          	</div>
+			</div>
+			}
         </div>
       </div>
 	</section>
