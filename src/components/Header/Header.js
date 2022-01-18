@@ -12,7 +12,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 const Header = () => {
 
-    const {user, setUser} = useContext(AuthContext);
+    // const {user, setUser} = useContext(AuthContext);
     const [cookies, setCookie, removeCookie] = useCookies(['name', 'jwtToken']);
 	const navigate = useNavigate()
 	const userName = localStorage.getItem('user');
@@ -22,7 +22,7 @@ const Header = () => {
 		removeCookie('jwtToken',{path:'/'});
 		localStorage.removeItem('user');
 		localStorage.removeItem('_id');
-		setUser(null);
+		// setUser(null);
 		navigate('/');
 	}
 

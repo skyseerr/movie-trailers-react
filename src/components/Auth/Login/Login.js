@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
@@ -6,12 +6,13 @@ import { login } from "../../../services/authService";
 import { ReactComponent as Logo } from "../../../logo.svg";
 import ControlledPopup from "../../Popups/Popup";
 import { validateLogin } from "../../../utils/validate";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 import "../Auth.css";
 
 const Login = () => {
+  const { loginData } = useContext(AuthContext);
   const navigate = useNavigate();
-
   const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
   const [error, setError] = useState("");
 
@@ -45,6 +46,13 @@ const Login = () => {
         setCookie("name", result.userData.name, { path: "/", maxAge: 3600 });
         localStorage.setItem("user", result.userData.name);
         localStorage.setItem("_id", result.userData._id);
+
+        loginData(
+          result.userData._id,
+          result.userData.token,
+          result.userData.name,
+          result.userData.email
+        );
 
         navigate("/");
       })

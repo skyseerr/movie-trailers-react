@@ -1,40 +1,33 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext();
 
+const initialState = {
+  _id: "",
+  token: "",
+  name: "",
+  email: ""
+};
 
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(initialState);
 
-// const initialState = {
-//     _id: '',
-//     token: '',
-//     name: '',
-//     email: '',
-// }
-
-
-// export const UserProvider = ({
-//     children
-// }) => {
-
-//     const [user, setUser] = useState(initialState)
-    
-//     const userInfo = ( _id, token, name, email) => {
-//         setUser({
-//             _id,
-//             token,
-//             name,
-//             email
-//         })
-//         console.log(user);
-// }
-//     return(
-//         <UserContext.Provider value={{user, userInfo}}>
-//             {children}
-//         </UserContext.Provider>
-//     );
-// }
+  const loginData = (_id, token, name, email) => {
+    setUser({
+      _id,
+      token,
+      name,
+      email
+    });
+  };
+  return (
+    <AuthContext.Provider value={{ user, loginData }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
 // export const useAuth = () => {
-//    const authState = useContext(UserContext);
-//    return authState;
-// }
+//   const authState = useContext(UserContext);
+//   return authState;
+// };

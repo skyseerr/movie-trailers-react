@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
@@ -8,10 +8,11 @@ import ControlledPopup from "../../Popups/Popup";
 import { register } from "../../../services/authService";
 import { ReactComponent as Logo } from "../../../logo.svg";
 import { validateRegister } from "../../../utils/validate";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 const Register = () => {
+  const { loginData } = useContext(AuthContext);
   const navigate = useNavigate();
-
   const [error, setError] = useState("");
   const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
 
@@ -43,8 +44,15 @@ const Register = () => {
           maxAge: 3600,
         });
         setCookie("name", result.userData.name, { path: "/", maxAge: 3600 });
-        localStorage.setItem('user', result.userData.name)
-        localStorage.setItem('_id', result.userData._id)
+        localStorage.setItem('user', result.userData.name);
+        localStorage.setItem('_id', result.userData._id);
+
+        loginData(
+          result.userData._id,
+          result.userData.token,
+          result.userData.name,
+          result.userData.email
+        );
         navigate("/");
       })
       .catch((err) => {

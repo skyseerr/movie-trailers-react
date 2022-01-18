@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import { AuthContext } from "./contexts/AuthContext";
+import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/Auth/ProtectedRoute/ProtectedRoute";
 
 import "./App.css";
@@ -35,7 +35,7 @@ function App() {
 
   return (
 
-    <AuthContext.Provider value={{user, setUser}}>
+    <AuthProvider>
     <div className="App">
         <Header />
         <Routes>
@@ -56,7 +56,7 @@ function App() {
         </Routes>
         <Footer />
     </div>
-    </ AuthContext.Provider >
+    </ AuthProvider>
   );
 }
 
